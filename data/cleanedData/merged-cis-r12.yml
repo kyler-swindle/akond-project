@@ -1,0 +1,64 @@
+element1:
+  name: ''
+  requirements:
+  - '[''Access'']'
+  - Level 2
+  - Kubernetes provides a default namespace, where objects are placed if no namespace
+    is specified for them. Placing objects in this namespace makes application of
+    RBAC and other controls more difficult.
+  - Prefer using secrets as files over secrets as environment variables
+  - Container-optimized OS
+  - '{''MakeIPTablesUtilChains'': True}'
+  - Kubernetes support
+  - Configure the kubelet service to restart
+  - Secure container footprint
+  - Establish Secure Configurations
+  - Check status of kubelet
+  - '{''streamingConnectionIdleTimeout'': ''4h0m0s''}'
+  - Encrypt sensitive data in transit
+  - Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third
+    party provider
+  - '{''description'': ''updated recommendation for EKS specifics'', ''arguments'':
+    [''10/08/2022  1.2.'']}'
+  - '[''PodSecurityPolicy'']'
+  - make-iptables -util-chains:true
+  - Image Registry and Image Scanning
+  - Hardened OS
+  - See the Amazon EKS documentation for the default value.
+  - Remove the system:masters group from all users in the cluster.
+  - "{'Control Plane Components Security is a shared responsibility between AWS and\
+    \ the Amazon EKS customer. The shared responsibility model describes this as security\
+    \ of the cloud and security in the cloud': 'Security of the cloud \u2013 AWS is\
+    \ responsible for protecting the infrastructure that runs AWS services in the\
+    \ AWS Cloud. For Amazon EKS, AWS is responsible for the Kubernetes control plane,\
+    \ which includes the control plane nodes and etcd database. Third-party auditors\
+    \ regularly test and verify the effectiveness of our security as part of the AWS'}"
+  - Consider external secret storage
+  - Minimal setup
+  - The default namespace should not be used (Manual)
+  - Establish and maintain a secure configuration process for enterprise assets (end-user
+    devices, non-computing/IoT devices, and servers) and software (operating systems
+    and applications). Review and update documentation.
+  - audit ing Kubelet configuration.
+  - Profile Applicability
+  - extract live configuration from the nodes
+  - This section consists of security recommendations for the components that run
+    on Amazon EKS worker nodes.
+  - "['Ticket 15928 \u2013 Recommendation 3.2.9', 'Ticket 15915 \u2013 Pod Security\
+    \ Policy', 'Ticket 15913 \u2013 recommendation 3.2.9', 'Ticket 16516 \u2013 recommendation\
+    \ 3.2.2', 'Ticket 15485 \u2013 ELS Audit Log impact statement updated. Page 168',\
+    \ 'Ticket']"
+  - '[[[None, None, None, None, None, None, None, None, None, None, None, None, None,
+    None, None, None, None, None, None, None, None, None, None, None, None, None,
+    None, None, None, None]]]'
+  - Maintain documented, standard security configuration standards for all authorized
+    operating systems and software.
+  - '[None]'
+  - '[''Network segmentation is important to ensure that containers can communicate
+    only with those they are supposed to. A network policy is a specification of how
+    selections of pods are allowed to communicate with each other and other network
+    endpoints.'', ''Once there is any Network Policy in a namespace selecting a particular
+    pod, that pod will reject any connections that are not allowed by any Network
+    Policy. Other pods in the namespace that are not selected by any Network Policy
+    will continue to accept all traffic'']'
+  - Reliance on authentication

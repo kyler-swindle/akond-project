@@ -1,0 +1,123 @@
+element1:
+  name: ''
+  requirements:
+  - "['chmod 644', 'Default Value', 'Referencs', 'Version', 'Control', 'Versions',\
+    \ 'v8', 3.3, 'Configure Data Access Control Lists', 'Configure data access control\
+    \ lists based on a user\u2019s need to know.', 'Apply data access control lists,\
+    \ also known as access permissions, to local and remote file systems, databases,\
+    \ and applications.']"
+  - 'MakeIPTablesUtilChains: true'
+  - '[''Restart kubelet service'', ''Check status'', ''Systemctl restart kubelet'',
+    ''Systemctl status kubelet'', ''Default Value'']'
+  - use a launch template with AssociatePublicIp
+  - '[''restart kubelet service'', ''check the service status'', ''systemctl daemon
+    -reload'', ''systemctl restart kubelet.service'', ''systemctl status kubelet'',
+    {''Default Value'': [''See the EKS documentation for the default value.'', {''References'':
+    [''https://kubernetes.io/docs/reference/command -line-tools -reference/kubelet/'',
+    ''https://kubernetes.io/docs'']}]}]'
+  - '[''RotateKubeletServerCertificate'']'
+  - '[''Ensure that the Anonymous Auth is Not Enabled'', ''Ensure that the --authorization-mode
+    argument is not set to AlwaysAllow'', ''Ensure that a Client CA File is Configured'',
+    ''Ensure that the --read-only-port is disabled'', ''Ensure that the --streaming-connection-idle-timeout
+    argument is not set to 0'', ''Ensure that the --make-iptables-util-chains argument
+    is set to true'', None]'
+  - '[''Public IP Addresses'']'
+  - '[[None]]'
+  - '[''kube system'', ''system:controller:job'', ''service account kube -system'',
+    ''system:controller:persistent'', ''binder'', ''ServiceAccount kube -system'',
+    ''system:controller:replicaset'', ''ServiceAccount kube -system'', ''system:controller:statefulset'',
+    ''ServiceAccount kube -system'', {''CIS Controls'': None, ''Controls'': None,
+    ''Version'': {''v8'': None}}]'
+  - "['\u25CF \u25CF \u25CF']"
+  - "\uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F\
+    \ \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F\
+    \ \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F\
+    \ \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F \uF06F\
+    \ \uF06F \uF06F \uF06F"
+  - '[[[[[None]]]]]'
+  - Use network policies to isolate traffic in your cluster network.
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities. This account should only be used for administrative
+    activities and not internet browsing, email, or similar activities.
+  - RotateKubeletServerCertificate
+  - '12'
+  - '[[[[[[[[[[[[[[[[[[[[[[[[[[[None]]]]]]]]]]]]]]]]]]]]]]]]]]]'
+  - '[''ps -ef | grep kubelet'']'
+  - '[''Some global condition keys are available.'']'
+  - Minimize the admission of root containers
+  - Minimize the admission of containers wishing to share the host network namespace
+  - "restrict Administrator Privileges to Dedicated Administrator Accounts Restrict\
+    \ administrator privileges to dedicated administrator accounts on enterprise assets.\
+    \ Conduct general computing activities, such as internet browsing, email, and\
+    \ productivity suite use, from the user\u2019s primary, non-privileged account.\
+    \  \u25CF \u25CF \u25CF Ensure that all users with administrative account access\
+    \ use a dedicated or secondary account for elevated activities. This account should\
+    \ only be used for administrative activities and not internet browsing,"
+  - '[''escalate rights'']'
+  - '[{''admin_account'': [True]}]'
+  - Minimize the admission of containers with
+  - '[[[''Amazon ECR'', ''Third party provider (Automated)'']]]'
+  - nly - General 5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for
+    Kubernetes or Upgrade to AWS CLI v1.16.156 or greater (Manual)
+  - '[{''hostPID'': [False]}, {''allow_hostPID'': [False]}]'
+  - "['\u25CF \u25CF']"
+  - Prefer using a container -optimized OS when possible
+  - '{''description'': ''By default secrets created using the Kubernetes API are stored
+    in tmpfs and are encrypted at rest.''}'
+  - aws eks create-nodegroup with only private subnets, or
+  - '{''description'': "Enable ''Secrets Encryption'' during Amazon EKS cluster creation
+    as described in the ''References'' section."}'
+  - '[''Minimize Container Registries to only those approved'', ''Prefer using dedicated
+    EKS Service Accounts'', ''Ensure Kubernetes Secrets are encrypted using Customer
+    Master Keys (CMKs) managed in AWS KMS'', ''Restrict Access to the Control Plane
+    Endpoint'', ''Ensure Network Policy is Enabled and set as appropriate'', ''Encrypt
+    traffic to HTTPS load balancers with TLS certificates'', ''Manage Kubernetes RBAC
+    users with AWS IAMAuthenticator for Kubernetes or Upgrade to AWS CLI v'']'
+  - Please ensure all desired networks are on the allowlist (whitelist) to prevent
+    inadvertently blocking external access to your cluster's control plane.
+  - aws eks update -cluster-config \ --name <cluster -name> \ --region <region> \
+    --resources -vpc-config endpointPublicAccess=false, endpointPrivateAccess=true
+  - Minimize the admission of containers wishing to share the host IPC namespace (Automated)
+  - Network Policy is a specification of how selections of pods are allowed to communicate
+    with each other and other network endpoints.
+  - '[[[[[[[[[[[None, None, None, None, None, None, None, None, None, None, None,
+    None, None, None, None, None, None, None, None]]]]]]]]]]]'
+  - '[[[None]]]'
+  - Minimize the admission of containers wishing to share the host process ID namespace
+  - '[[[''AWS CLI'', ''DescribeImageScanFindings API'']]]'
+  - '[''Add policies to each namespace in the cluster which has user workloads to
+    restrict the admission of privileged containers.'', ''To enable PSA for a namespace
+    in your cluster, set the pod - security.kubernetes.io/enforce label with the policy
+    value you want to enf orce.'', ''kubectl label --overwrite ns NAMESPACE pod -
+    security.kubernetes.io/enforce=restricted'']'
+  - restrict admission of hostPID containers by default, there are no restrictions
+    on the creation of hostPID containers.
+  - command line argument kubelet configuration authentication client CA file
+  - Minimize the admission of containers with allowPrivilegeEscalation
+  - '{''Resource'': [''resource1'', ''resourc e2'']}'
+  - '[''Enable logging'', ''Enable audit'', ''Enable authenticator'', ''Enable controller
+    manager'', ''Enable scheduler'']'
+  - Amazon EKS worker node IAM role (NodeInstanceRole)
+  - 'Audit: Check for the following to be ''enabled: true'' Page 132'
+  - '[{''hostNetwork'': False}]'
+  - '[[[[None]]]]'
+  - '[''access control reviews'']'
+  - '[''AWS CLI'']'
+  - Minimize the admission of containers wishing to share the host IPC namespace
+  - '[''Private Endpoint Ac cess'']'
+  - systemd kubelet service service status
+  - '[{''CIS Controls'': [''Version Control'', ''IG 1 IG 2 IG 3'']}]'
+  - The default namespace should not be used
+  - '[[[None, None, None, None, None, None, None, None, None, None, None, None, None,
+    None, None, None, None, None, None, None, None, None, None, None, None, None,
+    None, None, None, None]]]'
+  - Amazon ECR images with Amazon EKS
+  - '[{''hostIPC'': False}]'
+  - '[None]'
+  - RotateCertificate
+  - '[''AWS ECR defines its own set of condition'']'
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+  - authentication status
+  - Configure the Cluster Service Account with Storage Object Viewer Role to only
+    allow read-only access to Amazon ECR.

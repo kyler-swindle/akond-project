@@ -1,0 +1,51 @@
+element1:
+  name: ''
+  requirements:
+  - Enable 'Secrets Encryption' during Amazon EKS cluster creation as described in
+    the references.
+  - cluster-admin
+  - Automated
+  - Maintain secure images or templates for all systems in the enterprise based on
+    the organization's approved configuration standards.
+  - RotateKubeletServerCertificate
+  - '[[[[[[[[[[[[[[[[[[[[[[[[[[[None]]]]]]]]]]]]]]]]]]]]]]]]]]]'
+  - '[''enable private endpoint access'', ''disable internet access'']'
+  - '[''Anonymous Auth'', ''--authorization -mode'', ''--read-only-port'', ''--streaming
+    -connection -idle-timeout'', ''--make -iptables -util-chains'', ''--eventRecordQPS'',
+    ''--rotate -certificates'']'
+  - escalate rights
+  - Minimize the admission of containers wishing to share the host network namespace
+  - Disable public IP addresses for cluster nodes, so that they only have private
+    IP addresses. Private Nodes
+  - If possible, rewrite application code to read secrets from mounted secret files,
+    rather than from environment variables.
+  - '[''Anonymous Auth'', ''--authorization -mode'']'
+  - Apply data access control lists to local and remote file systems, databases, and
+    applications.
+  - '[''TLS'', ''kubelet certificate authentication'']'
+  - configure al lowable CIDR blocks
+  - Rewrite application code to read secrets from mounted secret files, rather than
+    from environment variables.
+  - Monitoring the base operating system and applications for vulnerabilities and
+    quickly updating with the latest security patches.
+  - '{''default'': ''no restrictions''}'
+  - Minimize the admission of containers wishing to share the host process ID namespace
+  - Monitoring the base operating system and applications for vulnerabilities and
+    quickly updating with the latest security patches. End-point protection (Antivirus
+    software, Endpoint Detection and Response (EDR), etc.). Logging and monitoring
+    user and system activity.
+  - Manual
+  - '{''references'': [''https://kubernetes.io/docs/concepts/security/pod -security
+    -admission/'']}'
+  - Minimize the admission of containers with allowPrivilegeEscalation
+  - '{''Default Value'': None}'
+  - Minimize the admission of containers wishing to share the host IPC namespace
+  - API server access
+  - The default namespace should not be used
+  - enable public endpoint access
+  - Prefer using a container - optimized OS when possible
+  - AWS API requests
+  - '{''references'': [''https://kubernetes.io/docs/concepts/security/pod -security
+    -'']}'
+  - '[None]'
+  - restrict admission of hostNetwork containers

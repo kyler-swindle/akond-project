@@ -1,0 +1,46 @@
+element1:
+  name: ''
+  requirements:
+  - Restrict administrator privileges to dedicated administrator accounts on enterprise
+    assets.
+  - restart kubelet service
+  - '[[{''access_to_service'': [[[[[[[[None, None, None, None]]]]]]]]}]]'
+  - Change Default Passwords
+  - systemctl status kubelet
+  - Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third
+    party provider (Automated)
+  - Automated
+  - '[[''TLS'', ''OpenSSH'']]'
+  - '[[[[[[[[[[[[[[[[[[[[[[[[[[[None]]]]]]]]]]]]]]]]]]]]]]]]]]]'
+  - Enable Kubelet authentication using certificates.
+  - Minimize cluster access to read -only for Amazon ECR (Manual)
+  - Configure the Cluster
+  - '[[{''access_to_service'': [[[[[None]]]]]}]]'
+  - check kubelet service status
+  - '{''References'': [''https://kubernetes.io/docs/reference/command -line-tools
+    -reference/kubelet/'', ''https://kubernetes.io/docs/reference/access -authn -authz/kubelet
+    -authn -'']}'
+  - Manual
+  - '[[''cluster.logging.clusterLogging'']]'
+  - "\uF06F \uF06F"
+  - '{''Default Value'': None}'
+  - Ensure
+  - systemctl restart kubelet
+  - Restrict Administrator Privileges to Dedicated Administrator Accounts
+  - '[None]'
+  - Minimize user access to Amazon ECR (Manual)
+  - Ensure that if the kubelet refers to a configuration file with the --config argument,
+    that file is owned by root:root.
+  - "Conduct general computing activities, such as internet browsing, email, and productivity\
+    \ suite use, from the user\u2019s primary, non-privileged account."
+  - '[''Anonymous Auth is Not Enabled (Automated)'', ''--authorization -mode argument
+    is not set to AlwaysAllow'', ''--read-only-port is disabled'', ''--streaming -connection
+    -idle-timeout argument is not set to 0'', ''--make -iptables -util-chains argument
+    is set to true'', ''--eventRecordQPS argument is set to 0 or a level which ensures
+    appropriate event capture'']'
+element3:
+  name: ''
+  requirements: []
+element4:
+  name: ''
+  requirements: []
