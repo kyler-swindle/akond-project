@@ -1,0 +1,126 @@
+kubelet_security:
+  name: kubelet security
+  requirements:
+    - Enable RotateKubeletServerCertificate
+    - Ensure kubelet server certificate rotation is enabled
+    - Ensure kubelet authentication uses client CA certificate
+    - Ensure Anonymous Auth is disabled
+    - Ensure --authorization-mode is not AlwaysAllow
+    - Ensure --read-only-port is disabled
+    - Ensure --streaming-connection-idle-timeout is configured
+    - Ensure --make-iptables-util-chains is enabled
+    - Ensure event recording (eventRecordQPS) is properly configured
+
+rbac_and_access_control:
+  name: rbac and access control
+  requirements:
+    - Restrict administrator privileges to dedicated accounts
+    - Use separate accounts for administrative and non-administrative tasks
+    - Enforce least privilege for Kubernetes RBAC users
+    - Avoid privilege escalation rights unless required
+    - Ensure cluster-admin role is tightly controlled
+    - Perform access control reviews regularly
+
+authentication_and_authorization:
+  name: authentication and authorization
+  requirements:
+    - Use AWS IAM Authenticator for Kubernetes RBAC integration
+    - Ensure proper authentication status enforcement
+    - Enforce secure authentication mechanisms for API access
+
+container_admission_control:
+  name: container admission control
+  requirements:
+    - Do not allow privileged containers by default
+    - Do not allow root containers
+    - Do not allow containers with allowPrivilegeEscalation enabled
+    - Do not allow containers sharing hostNetwork namespace
+    - Do not allow containers sharing hostPID namespace
+    - Do not allow containers sharing hostIPC namespace
+    - Restrict hostPID, hostIPC, hostNetwork usage by policy
+    - The default namespace should not be used
+
+network_security:
+  name: network security
+  requirements:
+    - Enable Kubernetes Network Policies for workload isolation
+    - Ensure all required networks are allowlisted for control plane access
+    - Enable private endpoint access for cluster API server
+    - Disable public endpoint access where possible
+    - Ensure CIDR-based access restrictions are configured
+
+secrets_and_encryption:
+  name: secrets and encryption
+  requirements:
+    - Enable Secrets Encryption during EKS cluster creation
+    - Ensure Kubernetes Secrets are encrypted using AWS KMS CMKs
+    - Ensure secrets are stored securely at rest in tmpfs or encrypted storage
+    - Ensure encryption of sensitive data in transit using TLS
+
+eks_cluster_security:
+  name: eks cluster security
+  requirements:
+    - Ensure cluster logging (audit, scheduler, controller, authenticator) is enabled
+    - Ensure cluster endpoint is configured for private access
+    - Ensure worker nodes use private subnets only
+    - Ensure EKS node group uses secure configuration
+    - Ensure cluster configuration follows security baseline standards
+
+image_and_registry_security:
+  name: image and registry security
+  requirements:
+    - Minimize container registries to only approved sources
+    - Use Amazon ECR with least privilege access
+    - Ensure image scanning is enabled using AWS ECR or third-party tools
+    - Ensure secure handling of container images in EKS
+
+policy_and_admission_control:
+  name: policy and admission control
+  requirements:
+    - Apply Pod Security Admission policies per namespace
+    - Enforce restricted policy mode for workloads
+    - Add namespace-level policies restricting privileged containers
+    - Enforce admission control restrictions consistently
+
+network_policy_and_isolation:
+  name: network policy and isolation
+  requirements:
+    - Ensure Network Policy defines allowed pod-to-pod communication
+    - Prevent unrestricted internal cluster communication by default
+
+operational_security:
+  name: operational security
+  requirements:
+    - Enable logging, auditing, and monitoring across all cluster components
+    - Ensure authentication, scheduler, controller, and API logs are enabled
+    - Maintain access control reviews for administrative accounts
+    - Ensure vulnerability scanning via AWS CLI or ECR APIs is used
+
+iam_and_permissions:
+  name: iam and permissions
+  requirements:
+    - Ensure EKS worker node IAM role uses least privilege
+    - Configure ECR access as read-only where possible
+    - Ensure IAM policies follow least privilege principles
+
+cluster_hardening:
+  name: cluster hardening
+  requirements:
+    - Prefer container-optimized operating systems
+    - Ensure secure baseline configuration for Kubernetes clusters
+    - Ensure default namespace is not used for workloads
+    - Ensure secure cluster configuration for production environments
+
+api_server_security:
+  name: api server security
+  requirements:
+    - Ensure API server access is restricted to private endpoint where possible
+    - Ensure secure access control for cluster endpoint
+    - Ensure authentication status is properly enforced
+
+general_security_baseline:
+  name: general security baseline
+  requirements:
+    - Ensure administrative access uses dedicated accounts
+    - Ensure security configurations follow organizational standards
+    - Ensure secure configuration management across cluster components

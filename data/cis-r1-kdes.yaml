@@ -1,0 +1,8 @@
+element1:
+  name: Control Plane Configuration
+  requirements:
+  - Enable Detailed Logging
+  - Ensure that
+  - Enable audit Logs (Manual)
+  - Ensure that all options are toggled to 'Enabled'
+  - Ensure that all options are set to 'Enabled'

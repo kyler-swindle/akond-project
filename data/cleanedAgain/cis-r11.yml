@@ -1,0 +1,104 @@
+kubelet_configuration:
+  name: kubelet configuration
+  requirements:
+    - Ensure that the kubelet configuration file ownership is set to root:root
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+    - Ensure that the kubelet kubeconfig file ownership is set to root:root
+
+kubeconfig_file_permissions:
+  name: kubeconfig file permissions
+  requirements:
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+    - Ensure kubelet kubeconfig ownership is root:root
+
+logging_monitoring:
+  name: logging and monitoring
+  requirements:
+    - Enable audit logs
+    - aws_api_calls
+    - Logging
+
+network_cluster_security:
+  name: network and cluster security
+  requirements:
+    - Ensure clusters use Private Endpoint enabled and Public Access disabled
+    - Restrict access to control plane endpoint
+    - Ensure Network Policy is enabled
+    - Ensure all namespaces have Network Policies
+    - Ensure CNI plugin supports network policies
+    - Encrypt traffic to HTTPS load balancers using TLS
+    - Encrypt sensitive data in transit
+
+iam_rbac:
+  name: identity and access management
+  requirements:
+    - Manage Kubernetes RBAC users with AWS IAM Authenticator
+    - Minimize user access to Amazon ECR
+    - Disable dormant accounts (45 days)
+    - Minimize admission of containers with user access to ECR
+
+container_pod_security:
+  name: container and pod security
+  requirements:
+    - Minimize admission of privileged containers
+    - Minimize admission of root containers
+    - Minimize containers with allowPrivilegeEscalation
+    - Minimize containers with added capabilities
+    - Minimize containers with capabilities assigned
+    - Minimize containers sharing host network namespace
+    - Apply security context to pods and containers
+    - Use namespaces for administrative boundaries
+    - Do not use default namespace
+
+secrets_encryption:
+  name: secrets and encryption
+  requirements:
+    - Ensure Kubernetes Secrets are encrypted using Customer Master Keys
+    - Prefer secrets as files over environment variables
+    - Consider external secret storage
+    - Encrypt sensitive data
+
+image_registry_security:
+  name: image and registry security
+  requirements:
+    - Minimize container registries to approved ones only
+    - Use read-only access where possible for ECR
+    - Perform automated vulnerability scans of externally exposed assets
+
+system_hardening:
+  name: system hardening
+  requirements:
+    - Do not override node hostnames
+    - Container-optimized OS
+    - Enforce URL/network filtering
+    - Protect kernel defaults
+
+vulnerability_management:
+  name: scanning and vulnerability management
+  requirements:
+    - Perform automated vulnerability scans of externally exposed assets
+    - Perform automated vulnerability scans of internal assets
+    - Use SCAP-compliant tools
+    - Perform scans quarterly or more frequently
+
+eks_configurations:
+  name: eks specific configurations
+  requirements:
+    - Prefer using dedicated EKS service accounts
+    - Follow Amazon EKS documentation defaults
+    - eks.privileged settings
+
+policy_best_practices:
+  name: policy and best practices
+  requirements:
+    - Create administrative boundaries using namespaces
+    - Ensure least privilege access
+    - Avoid AlwaysAllow authorization modes
+    - Ensure authentication and authorization separation
+
+misc_cleanup:
+  name: misc cleanup items
+  requirements:
+    - Remove null or malformed entries
+    - Remove duplicate Manual or Automated tags
+    - Fix malformed nested lists

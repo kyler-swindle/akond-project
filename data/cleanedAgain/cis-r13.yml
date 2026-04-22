@@ -1,0 +1,111 @@
+kubelet_security:
+  name: kubelet security
+  requirements:
+    - Enable kubelet client certificate rotation
+    - --authorization-mode must not be AlwaysAllow
+    - --read-only-port must be disabled
+    - --streaming-connection-idle-timeout must be configured (not 0)
+    - --protect-kernel-defaults must be enabled
+    - --make-iptables-util-chains must be enabled
+    - --hostname-override must not be set
+    - --eventRecordQPS must be limited
+    - Ensure kubelet rotate-certificates is enabled
+    - kubelet config file ownership must be root:root
+    - kubelet config file permissions must be 644 or stricter
+    - Audit kubelet configuration regularly
+
+authentication_and_rbac:
+  name: authentication and rbac
+  requirements:
+    - Remove system:masters group from all users
+    - Avoid anonymous authentication
+    - Avoid overriding authentication via insecure CLI flags
+    - Use dedicated administrative accounts
+    - Restrict admin privileges to dedicated accounts
+
+secrets_management:
+  name: secrets management
+  requirements:
+    - Minimize access to secrets
+    - Ensure Kubernetes Secrets are encrypted using AWS KMS CMKs
+    - Enable Secrets Encryption
+    - Prefer secrets as files over environment variables
+    - Avoid wildcard access to secrets in RBAC
+
+image_registry_security:
+  name: image registry security
+  requirements:
+    - Minimize container registries to only approved sources
+    - Enable image vulnerability scanning (ECR or third-party)
+    - Scan images before deployment to EKS
+    - Restrict read-only access to Amazon ECR
+
+container_security:
+  name: container security
+  requirements:
+    - Disallow privileged containers
+    - Disallow allowPrivilegeEscalation
+    - Disallow containers with added capabilities
+    - Disallow sharing host network namespace
+    - Disallow sharing host IPC namespace
+    - Disallow sharing host PID namespace
+    - Minimize access to create pods
+
+network_security:
+  name: network security
+  requirements:
+    - Ensure Network Policies are enforced
+    - Ensure all namespaces have Network Policies
+    - Ensure CNI plugin supports network policies
+    - Restrict cluster endpoint access using CIDR allowlists
+    - Avoid public unrestricted cluster endpoints
+
+system_hardening:
+  name: system hardening
+  requirements:
+    - Use container-optimized OS
+    - Use hardened OS baseline
+    - Maintain secure configuration process for OS and applications
+
+logging_and_audit:
+  name: logging and audit
+  requirements:
+    - Enable detailed audit logging
+    - Collect logs including user, timestamp, event source, and destination
+    - Establish audit log management process
+    - Ensure kubelet auditing is enabled
+
+access_control:
+  name: access control
+  requirements:
+    - Disable dormant accounts after 45 days
+    - Enforce least privilege access
+    - Restrict administrative privileges
+    - Require separate accounts for privileged access
+
+eks_security:
+  name: eks security
+  requirements:
+    - Use AWS Fargate profiles where applicable
+    - Prefer dedicated EKS service accounts
+    - Understand AWS shared responsibility model
+    - Follow EKS security best practices
+
+configuration_management:
+  name: configuration management
+  requirements:
+    - Maintain secure configuration standards
+    - Establish configuration governance process
+    - Ensure secure baseline for enterprise assets
+    - Regularly review and update security documentation
+
+cluster_endpoint_security:
+  name: cluster endpoint security
+  requirements:
+    - Avoid leaving cluster endpoint fully public
+    - Restrict endpoint access using CIDR blocks
+
+kubelet_command_check:
+  name: kubelet inspection command
+  requirements:
+    - ps -ef | grep kubelet

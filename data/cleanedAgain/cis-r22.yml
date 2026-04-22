@@ -1,0 +1,82 @@
+access_control:
+  name: access control
+  requirements:
+    - Restrict administrator privileges to dedicated administrator accounts
+    - Change default passwords
+    - Ensure least privilege access for all users
+    - Separate privileged and non-privileged user activity
+
+authentication_and_authorization:
+  name: authentication and authorization
+  requirements:
+    - Enable kubelet authentication using certificates
+    - Ensure Anonymous Auth is disabled
+    - Ensure --authorization-mode is not AlwaysAllow
+    - Ensure proper authentication and authorization configuration for kubelet
+
+kubelet_security:
+  name: kubelet security
+  requirements:
+    - Ensure kubelet configuration file referenced via --config is owned by root:root
+    - Ensure kubelet service is properly restarted after configuration changes
+    - Ensure kubelet authentication and authorization settings are secure
+    - Ensure kubelet event recording is properly configured (--eventRecordQPS not 0)
+
+image_security:
+  name: image security
+  requirements:
+    - Enable image vulnerability scanning using AWS ECR or third-party tools
+    - Minimize read-only access to Amazon ECR
+    - Ensure container images are scanned before deployment
+    - Ensure secure image lifecycle management
+
+network_and_transport_security:
+  name: network and transport security
+  requirements:
+    - Use TLS for encrypted communication
+    - Use OpenSSH for secure remote access
+    - Secure network communication between cluster components
+
+eks_cluster_security:
+  name: eks cluster security
+  requirements:
+    - Configure cluster securely according to best practices
+    - Ensure cluster logging configuration is enabled where required
+    - Apply secure configuration baseline to EKS clusters
+
+container_registry_security:
+  name: container registry security
+  requirements:
+    - Minimize user access to Amazon ECR
+    - Restrict ECR access to least privilege principles
+    - Ensure only approved container registries are used
+
+configuration_management:
+  name: configuration management
+  requirements:
+    - Ensure kubelet configuration files are owned by root:root
+    - Ensure cluster configuration is properly maintained and validated
+    - Ensure secure configuration process is enforced
+
+kubelet_required_baseline_flags:
+  name: kubelet required baseline flags
+  requirements:
+    - authorization-mode must not be AlwaysAllow
+    - read-only-port must be disabled
+    - streaming-connection-idle-timeout must not be 0
+    - make-iptables-util-chains must be enabled
+    - eventRecordQPS must be set appropriately
+
+operational_security:
+  name: operational security
+  requirements:
+    - Perform administrative tasks using dedicated privileged accounts only
+    - Use non-privileged accounts for daily computing activities
+    - Conduct system administration under controlled access policies
+
+audit_and_compliance:
+  name: audit and compliance
+  requirements:
+    - Ensure Kubernetes audit logging is properly configured
+    - Ensure kubelet authentication and authorization compliance
+    - Maintain adherence to Kubernetes security baseline standards
