@@ -198,15 +198,15 @@ if __name__ == "__main__":
     Path("outputs").mkdir(exist_ok=True)
 
     name_output = compare_element_names(
-        "sample_data/sample_a.yaml",
-        "sample_data/sample_b.yaml",
-        "outputs/name_differences.txt"
+        "data/IndividualCleanedAgain/cis-r1-kdes.yaml",
+        "data/IndividualCleanedAgain/cis-r2-kdes.yaml",
+        "outputs/name_differences12.txt"
     )
 
     req_output = compare_element_names_and_requirements(
-        "sample_data/sample_a.yaml",
-        "sample_data/sample_b.yaml",
-        "outputs/requirement_differences.txt"
+        "data/IndividualCleanedAgain/cis-r1-kdes.yaml",
+        "data/IndividualCleanedAgain/cis-r2-kdes.yaml",
+        "outputs/requirement_differences12.txt"
     )
 
     print("Names output:")
