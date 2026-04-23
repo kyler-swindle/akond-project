@@ -1,0 +1,80 @@
+kubelet:
+  name: kubelet
+  requirements:
+  - permissions: 644 or more restrictive
+  - ownership: root:root
+  - anonymous-auth: false
+  - authorization-mode: not AlwaysAllow
+  - read-only-port: disabled
+  - client-ca-file: configured
+  - rotate-certificates: true
+  - rotate-kubelet-server-certificate: true
+  - eventRecordQPS: 0 or appropriately configured
+  - streaming-connection-idle-timeout: not 0 and not 4h0m0s
+  - make-iptables-util-chains: true
+  - kubeconfig ownership: root:root
+  - kubeconfig permissions: 644 or more restrictive
+  - authentication webhook: enabled
+  - audit logs: enabled and collected
+  - minimize access to secrets
+  - cluster-admin role: only when required
+  - read-only port: disabled
+  - ensure explicit authorization checks from API server
+  - restrict public access to specific IP ranges
+  - use private endpoint access where possible
+  - enforce TLS-secured communication
+  - verify configuration file exists and is valid
+  - configuration file path defined
+  - command-line arguments reviewed and secured
+
+kubelet process:
+  name: kubelet process
+  requirements:
+  - ps -ef | grep kubelet
+  - verify kubelet is running with secure flags
+
+files:
+  name: kubelet files
+  requirements:
+  - /var/lib/kubelet/kubeconfig ownership root:root
+  - /var/lib/kubelet/kubeconfig permissions 644 or more restrictive
+  - kubelet-config.json exists and valid JSON
+
+systemd:
+  name: kubelet systemd configuration
+  requirements:
+  - daemon-reload executed after changes
+  - kubelet service restarted after configuration updates
+
+network:
+  name: kubelet network security
+  requirements:
+  - restrict API server access
+  - use private endpoints
+  - enforce secure communication protocols
+  - limit public exposure
+
+authentication:
+  name: kubelet authentication
+  requirements:
+  - anonymous authentication disabled
+  - client CA file configured
+  - webhook authentication enabled
+
+authorization:
+  name: kubelet authorization
+  requirements:
+  - AlwaysAllow not used
+  - enforce RBAC-based authorization
+
+certificates:
+  name: kubelet certificates
+  requirements:
+  - client certificate rotation enabled
+  - server certificate rotation enabled
+
+logging:
+  name: kubelet logging
+  requirements:
+  - audit logs enabled
+  - logs centrally collected and monitored

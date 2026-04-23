@@ -1,0 +1,212 @@
+client_ca_file:
+  name: Client CA File
+  requirements:
+    - Ensure that a Client CA File is Configured (Manual)
+
+pod_security_policies:
+  name: Pod Security Policies
+  requirements:
+    - Minimize the admission of root containers
+    - Minimize the admission of containers sharing the host network namespace
+    - Minimize the admission of containers sharing the host IPC namespace
+    - Minimize the admission of privileged containers
+    - Minimize the admission of containers sharing the host process ID namespace
+    - Minimize the admission of containers with allowPrivilegeEscalation
+
+manual_admission_control:
+  name: Manual Admission Control
+  requirements:
+    - Minimize the admission of containers with capabilities assigned
+    - Ensure all namespaces have Network Policies defined
+
+automated_admission_control:
+  name: Automated Admission Control
+  requirements:
+    - Ensure all namespaces have Network Policies defined
+    - Ensure the CNI plugin supports network policies
+
+secrets_management:
+  name: Secrets Management
+  requirements:
+    - Prefer using secrets as files instead of environment variables
+    - Consider external secret storage
+
+extensible_admission_control:
+  name: Extensible Admission Control
+  requirements: []
+
+kubernetes_security_controls:
+  name: Kubernetes Security Controls
+  requirements:
+    - Manage Kubernetes secrets
+    - Implement container image scanning
+    - Apply security patches
+    - Implement network policies
+    - Monitor Kubernetes events
+    - Audit Kubernetes configuration
+    - Secure cluster access
+    - Monitor for vulnerabilities
+    - Manage Kubernetes nodes
+
+aws_compliance_programs:
+  name: AWS Compliance Programs
+  requirements:
+    - Ensure security in the cloud
+
+api_server_audit_logs:
+  name: API Server Audit Logs
+  requirements:
+    - Enabled
+
+kubeconfig_file:
+  name: kubeconfig file
+  requirements:
+    - Permissions set to 644 or more restrictive
+
+kubelet:
+  name: kubelet
+  requirements:
+    - Owned by root:root
+    - Ensure RotateKubeletServerCertificate is enabled
+    - Disable read-only port
+    - Ensure kubelet process is running
+    - Restart kubelet service when required
+    - Check service status
+    - Ensure kubelet config file permissions are 644 or more restrictive
+    - Ensure kubelet config ownership is root:root
+    - Verify --rotate-kubelet-server-certificate is set to true
+
+kubelet_service:
+  name: kubelet service
+  requirements:
+    - Exists
+    - Running
+    - read-only-port set to 0
+
+kubelet_config_json:
+  name: kubelet-config.json
+  requirements:
+    - Located at /etc/kubernetes/kubelet/kubelet-config.json
+    - Owned by root:root
+    - Referenced via --config argument
+
+authorization_mode:
+  name: AuthorizationMode
+  requirements:
+    - Webhook
+
+kubelet_args_conf:
+  name: kubelet-args.conf
+  requirements:
+    - Located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    - Does not disable certificate rotation
+    - Used with systemd-based systems
+
+kubelet_config_file:
+  name: Kubelet Config File
+  requirements:
+    - Exists
+    - read-only-port set to 0
+
+hostname_port:
+  name: HOSTNAME_PORT
+  requirements:
+    - localhost:8001
+
+node_name:
+  name: NODE_NAME
+  requirements:
+    - Example: ip-192.168.31.226.ec2.internal
+
+kernel_parameters:
+  name: Kernel Parameters
+  requirements:
+    - Protect kernel defaults
+
+rbac_and_service_accounts:
+  name: RBAC and Service Accounts
+  requirements:
+    - Limit use of cluster-admin role
+
+dedicated_admin_accounts:
+  name: Use of Dedicated Administrative Accounts
+  requirements:
+    - Use separate accounts for administrative tasks
+    - Do not use admin accounts for general activities
+
+network_policy:
+  name: Network Policy
+  requirements:
+    - Use policies to isolate cluster traffic
+
+cni_plugin:
+  name: CNI Plugin
+  requirements:
+    - Supports network policies
+
+secrets:
+  name: Secrets
+  requirements:
+    - Avoid using environment variables
+
+network_boundaries:
+  name: Network Boundaries
+  requirements:
+    - Maintain inventory of network boundaries
+
+security_contexts:
+  name: Security Contexts
+  requirements:
+    - Apply security contexts to pods and containers
+
+eks_cluster_endpoint:
+  name: EKS Cluster Endpoint
+  requirements:
+    - Use private endpoints
+    - Disable public IP addresses
+    - Use private nodes
+
+control_plane_components:
+  name: Control Plane Components
+  requirements:
+    - Enable audit logs
+    - Disable anonymous auth
+    - Enforce file permissions
+    - Ensure logging enabled
+
+network_policies:
+  name: Network Policies
+  requirements:
+    - Ensure all namespaces define policies
+    - Support traffic isolation
+
+data_encryption:
+  name: Data Encryption
+  requirements:
+    - Encrypt sensitive data in transit
+
+authentication_authorization:
+  name: Authentication and Authorization
+  requirements:
+    - Use IAM Authenticator or RBAC
+
+fargate_profile:
+  name: Fargate Profile
+  requirements:
+    - Use private subnets only
+
+production_systems:
+  name: Production Systems
+  requirements:
+    - Separate production and non-production environments
+    - Restrict developer access
+
+application_patch_management:
+  name: Application Patch Management
+  requirements:
+    - Perform automated patching
+
+firewall_management:
+  name: Firewall Management
+  requirements:
+    - Segment network based on sensitivity

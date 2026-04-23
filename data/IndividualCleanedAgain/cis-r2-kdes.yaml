@@ -1,0 +1,211 @@
+kubelet:
+  name: kubelet
+  requirements:
+    - Ensure kubelet configuration file permissions are 644 or more restrictive
+    - Ensure kubelet kubeconfig ownership is set to root:root
+    - Ensure kubelet configuration file ownership is set to root:root
+    - Ensure Anonymous Auth is disabled
+    - Ensure authorization-mode is not set to AlwaysAllow
+    - Enable audit logs
+    - Use secure communication protocols (TLS, WPA2, etc.)
+    - Verify kubelet process is running
+    - Check kubelet status
+    - Use kubectl proxy when needed
+
+anonymous_auth:
+  name: Anonymous Auth
+  requirements:
+    - Not enabled
+    - Not set to AlwaysAllow
+
+client_ca_file:
+  name: Client CA File
+  requirements:
+    - Configured
+
+read_only_port:
+  name: --read-only-port
+  requirements:
+    - Disabled
+
+default_service_accounts:
+  name: Default Service Accounts
+  requirements:
+    - Ensure default service accounts are not actively used
+
+service_account_tokens:
+  name: Service Account Tokens
+  requirements:
+    - Only mount tokens where necessary
+    - Review pod/service account configurations
+    - Disable unused or dormant accounts
+
+cluster_access_manager_api:
+  name: Cluster Access Manager API
+  requirements:
+    - Manage and enforce access control for EKS clusters
+
+privilege_escalation_controls:
+  name: Bind, Impersonate and Escalate permissions
+  requirements:
+    - Limit use of bind, impersonate, and escalate permissions
+
+benchmark:
+  name: Benchmark
+  requirements:
+    - Deploy applicable security benchmarks
+
+file_check:
+  name: file-check
+  requirements:
+    - Ensure permissions are 644 or more restrictive
+
+kubelet_config_file:
+  name: Kubelet config file
+  requirements:
+    - Permissions set to 644 or more restrictive
+
+authentication:
+  name: authentication
+  requirements:
+    - Anonymous authentication disabled
+
+kubelet_args:
+  name: kubelet-args
+  requirements:
+    - --anonymous-auth=false
+
+kubectl:
+  name: kubectl
+  requirements:
+    - Use kubectl proxy for API access when required
+
+rotate_certificate:
+  name: RotateCertificate
+  requirements:
+    - Enabled
+
+kubelet_config_json:
+  name: kubelet config.json
+  requirements:
+    - Certificate rotation enabled
+
+node:
+  name: node
+  requirements:
+    - Verify node configuration using kubectl
+    - Validate kubelet config via API
+
+dormant_accounts:
+  name: Dormant Accounts
+  requirements:
+    - Disable inactive accounts
+    - Restrict token usage
+
+api_server_communication:
+  name: API Server Communication
+  requirements:
+    - Avoid unnecessary service account token mounting
+
+rbac_controls:
+  name: RBAC Controls
+  requirements:
+    - Restrict cluster-admin privileges
+    - Limit impersonation and bind permissions
+
+cni_plugin_support:
+  name: CNI Plugin Support
+  requirements:
+    - Must support network policies
+
+dedicated_admin_accounts:
+  name: Dedicated Administrative Accounts
+  requirements:
+    - Use separate accounts for admin tasks
+
+secrets_management:
+  name: Secrets Management
+  requirements:
+    - Avoid plaintext secrets
+    - Use secure storage mechanisms
+
+amazon_ecr_image_scan:
+  name: Amazon ECR Image Scan
+  requirements:
+    - Enable image scanning
+    - Handle scan errors appropriately
+
+ecr_repository:
+  name: ECR Repository
+  requirements:
+    - Use valid repository ARNs
+
+aws_conditions:
+  name: Condition
+  requirements:
+    - Use aws:ResourceTag for access control
+
+cluster_endpoint_access:
+  name: Cluster Endpoint Access
+  requirements:
+    - Restrict public access
+    - Enable private endpoint access
+    - Limit CIDR ranges
+
+private_nodes:
+  name: Private Nodes
+  requirements:
+    - No public IPs
+    - Use private networking
+
+vpc_configuration:
+  name: VPC Configuration
+  requirements:
+    - Use private subnets
+    - No route to internet gateway
+    - Disable public IP assignment
+
+endpoint_configuration:
+  name: Endpoint Configuration
+  requirements:
+    - Configure public and private access appropriately
+
+network_policy_enforcement:
+  name: Network Policy Enforcement
+  requirements:
+    - Deny traffic not explicitly allowed
+
+network_policy_addon:
+  name: Network Policy Add-on
+  requirements:
+    - Installed before enabling network policies
+
+cluster_node_updates:
+  name: Cluster Node Rolling Update
+  requirements:
+    - Perform rolling updates when enabling/disabling policies
+
+rbac:
+  name: Role Based Access Control (RBAC)
+  requirements:
+    - Define and enforce least privilege roles
+
+eks_control_plane:
+  name: Amazon EKS Control Plane
+  requirements:
+    - Manage access via control plane configuration
+
+aws_cli:
+  name: AWS CLI Version 1.16.156 or later
+  requirements:
+    - Use updated AWS CLI version
+
+eks_service_accounts:
+  name: EKS Service Accounts
+  requirements:
+    - Properly configured and audited
+
+audit_procedures:
+  name: Updated Audit Procedure
+  requirements:
+    - Follow CIS recommendations (3.2.3, 5.4.1, 5.4.3, 5.5.1)
