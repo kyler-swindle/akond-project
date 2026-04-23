@@ -1,5 +1,4 @@
 import sys
-sys.stdout.reconfigure(encoding='utf-8')  # 🔥 FIX WINDOWS ENCODING
 
 import yaml
 import re
