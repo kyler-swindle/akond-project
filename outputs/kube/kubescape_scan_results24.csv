@@ -1,0 +1,3 @@
+FilePath,Severity,Control name,Failed resources,All Resources,Compliance score
+extracted_project_yamls,High,Applications credentials in configuration files,44,552,92.028984
+extracted_project_yamls,Medium,Ingress and Egress blocked,338,422,19.905214

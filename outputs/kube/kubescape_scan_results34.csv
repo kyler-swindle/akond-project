@@ -1,0 +1,2 @@
+FilePath,Severity,Control name,Failed resources,All Resources,Compliance score
+extracted_project_yamls,Medium,Ingress and Egress blocked,338,422,19.905214
