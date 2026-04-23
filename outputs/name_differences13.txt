@@ -1,0 +1,98 @@
+--authorization -mode
+--read-only-port
+age
+amazon ecr
+amazon eks
+anonymous auth
+api server audit logs
+application patch management
+audit logs
+authentication
+authentication and authorization
+authorizationmode
+automated admission control
+aws api
+aws api requests
+aws compliance programs
+aws ecr image scanning
+aws identity and access management (iam)
+aws_region
+cidr block for public endpoint access
+cluster access manager api
+cluster_endpoint
+cluster_name
+cni plugin
+configuration file
+containers wishing to share the host ipc namespace
+control plane components
+control plane logging
+create administrative boundaries between resources
+create pod
+data encryption
+default namespace
+default value
+eks cluster endpoint
+eks cluster logging configuration
+enable kubelet server certificate rotation
+encryption
+ensure that the rotatekubeletservercertificate argument is set to true (automated)
+eventrecordqps
+extensible admission control
+fargate profile
+firewall management
+hostname_port
+https load balancer
+iam role
+internal only - general condition keys
+kernel parameters
+kube
+kubeadm.conf
+kubeconfig
+kubeconfig file
+kubelet -auth=false
+kubelet -config.json
+kubelet config file
+kubelet configuration file ownership
+kubelet configuration file permissions
+kubelet server certificate rotation
+kubelet service
+kubelet-args.conf
+kubelet-config.json
+kubelet.service
+kubernetes api endpoint
+kubernetes cluster
+kubernetes security controls
+kubernetes service account
+manual admission control
+minimize the admission of containers wishing to share
+my-pod-security-policy
+namespaces
+network boundaries
+network policies
+node_name
+pod security policies
+pod-security-policy
+private endpoint
+private endpoint access
+private nodes
+privileged flag
+production systems
+ps
+public endpoint access
+rbac and service accounts
+references
+remediation method 2
+rotatekubeletservercertificate
+s
+secrets
+secrets management
+security contexts
+service account
+stat
+systemctl
+systemd
+the default namespace should not be used
+transit
+use of dedicated administrative accounts
+vpc_config
+wildcard use in roles and clusterroles

@@ -1,0 +1,76 @@
+--authorization -mode
+--read-only-port
+age
+amazon ecr
+amazon eks
+anonymous auth
+audit logs
+authentication
+aws api
+aws api requests
+aws ecr image scanning
+aws identity and access management (iam)
+aws_region
+cidr block for public endpoint access
+client ca file
+cluster access manager api
+cluster_endpoint
+cluster_name
+configuration file
+containers wishing to share the host ipc namespace
+control plane logging
+create administrative boundaries between resources
+create pod
+default namespace
+default value
+eks cluster logging configuration
+enable kubelet server certificate rotation
+encryption
+ensure that the rotatekubeletservercertificate argument is set to true (automated)
+eventrecordqps
+https load balancer
+iam role
+internal only - general condition keys
+kube
+kubeadm.conf
+kubeconfig
+kubelet -auth=false
+kubelet -config.json
+kubelet authentication
+kubelet authorization
+kubelet certificates
+kubelet configuration file ownership
+kubelet configuration file permissions
+kubelet files
+kubelet logging
+kubelet network security
+kubelet process
+kubelet server certificate rotation
+kubelet systemd configuration
+kubelet.service
+kubernetes api endpoint
+kubernetes cluster
+kubernetes service account
+minimize the admission of containers wishing to share
+my-pod-security-policy
+namespaces
+network policy
+pod-security-policy
+private endpoint
+private endpoint access
+private nodes
+privileged flag
+ps
+public endpoint access
+references
+remediation method 2
+rotatekubeletservercertificate
+s
+service account
+stat
+systemctl
+systemd
+the default namespace should not be used
+transit
+vpc_config
+wildcard use in roles and clusterroles

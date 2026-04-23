@@ -1,0 +1,93 @@
+--authorization -mode
+age
+amazon ecr
+amazon ecr image scan
+amazon eks
+amazon eks control plane
+api server communication
+audit logs
+aws api
+aws api requests
+aws cli version 1.16.156 or later
+aws ecr image scanning
+aws identity and access management (iam)
+aws_region
+benchmark
+bind, impersonate and escalate permissions
+cidr block for public endpoint access
+cluster endpoint access
+cluster node rolling update
+cluster_endpoint
+cluster_name
+cni plugin support
+condition
+configuration file
+containers wishing to share the host ipc namespace
+control plane logging
+create administrative boundaries between resources
+create pod
+dedicated administrative accounts
+default namespace
+default service accounts
+default value
+dormant accounts
+ecr repository
+eks cluster logging configuration
+eks service accounts
+enable kubelet server certificate rotation
+encryption
+endpoint configuration
+ensure that the rotatekubeletservercertificate argument is set to true (automated)
+eventrecordqps
+file-check
+https load balancer
+iam role
+internal only - general condition keys
+kube
+kubeadm.conf
+kubeconfig
+kubectl
+kubelet -auth=false
+kubelet -config.json
+kubelet config file
+kubelet config.json
+kubelet configuration file ownership
+kubelet configuration file permissions
+kubelet server certificate rotation
+kubelet-args
+kubelet.service
+kubernetes api endpoint
+kubernetes cluster
+kubernetes service account
+minimize the admission of containers wishing to share
+my-pod-security-policy
+namespaces
+network policy
+network policy add-on
+network policy enforcement
+node
+pod-security-policy
+private endpoint
+private endpoint access
+privileged flag
+ps
+public endpoint access
+rbac controls
+references
+remediation method 2
+role based access control (rbac)
+rotatecertificate
+rotatekubeletservercertificate
+s
+secrets management
+service account
+service account tokens
+stat
+systemctl
+systemd
+the default namespace should not be used
+transit
+updated audit procedure
+vpc configuration
+vpc_config
+wildcard use in roles and clusterroles

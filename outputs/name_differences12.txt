@@ -1,0 +1,65 @@
+--read-only-port
+amazon ecr image scan
+amazon eks control plane
+anonymous auth
+api server audit logs
+api server communication
+application patch management
+authentication
+authentication and authorization
+authorizationmode
+automated admission control
+aws cli version 1.16.156 or later
+aws compliance programs
+benchmark
+bind, impersonate and escalate permissions
+cluster access manager api
+cluster endpoint access
+cluster node rolling update
+cni plugin
+cni plugin support
+condition
+control plane components
+data encryption
+dedicated administrative accounts
+default service accounts
+dormant accounts
+ecr repository
+eks cluster endpoint
+eks service accounts
+endpoint configuration
+extensible admission control
+fargate profile
+file-check
+firewall management
+hostname_port
+kernel parameters
+kubeconfig file
+kubectl
+kubelet config.json
+kubelet service
+kubelet-args
+kubelet-args.conf
+kubelet-config.json
+kubernetes security controls
+manual admission control
+network boundaries
+network policies
+network policy
+network policy add-on
+network policy enforcement
+node
+node_name
+pod security policies
+private nodes
+production systems
+rbac and service accounts
+rbac controls
+role based access control (rbac)
+rotatecertificate
+secrets
+security contexts
+service account tokens
+updated audit procedure
+use of dedicated administrative accounts
+vpc configuration

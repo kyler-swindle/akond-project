@@ -1,0 +1,42 @@
+api server audit logs
+application patch management
+authentication and authorization
+authorizationmode
+automated admission control
+aws compliance programs
+client ca file
+cni plugin
+control plane components
+data encryption
+eks cluster endpoint
+extensible admission control
+fargate profile
+firewall management
+hostname_port
+kernel parameters
+kubeconfig file
+kubelet authentication
+kubelet authorization
+kubelet certificates
+kubelet config file
+kubelet files
+kubelet logging
+kubelet network security
+kubelet process
+kubelet service
+kubelet systemd configuration
+kubelet-args.conf
+kubelet-config.json
+kubernetes security controls
+manual admission control
+network boundaries
+network policies
+network policy
+node_name
+pod security policies
+production systems
+rbac and service accounts
+secrets
+secrets management
+security contexts
+use of dedicated administrative accounts

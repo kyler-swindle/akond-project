@@ -1,0 +1,45 @@
+--read-only-port
+amazon ecr image scan
+amazon eks control plane
+anonymous auth
+api server communication
+authentication
+aws cli version 1.16.156 or later
+benchmark
+bind, impersonate and escalate permissions
+client ca file
+cluster access manager api
+cluster endpoint access
+cluster node rolling update
+cni plugin support
+condition
+dedicated administrative accounts
+default service accounts
+dormant accounts
+ecr repository
+eks service accounts
+endpoint configuration
+file-check
+kubectl
+kubelet authentication
+kubelet authorization
+kubelet certificates
+kubelet config file
+kubelet config.json
+kubelet files
+kubelet logging
+kubelet network security
+kubelet process
+kubelet systemd configuration
+kubelet-args
+network policy add-on
+network policy enforcement
+node
+private nodes
+rbac controls
+role based access control (rbac)
+rotatecertificate
+secrets management
+service account tokens
+updated audit procedure
+vpc configuration

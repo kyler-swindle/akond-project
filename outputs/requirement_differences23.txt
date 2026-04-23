@@ -1,0 +1,118 @@
+amazon ecr image scan,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+amazon eks control plane,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+api server communication,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+aws cli version 1.16.156 or later,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+benchmark,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+bind, impersonate and escalate permissions,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+cluster endpoint access,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+cluster node rolling update,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+cni plugin support,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+condition,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+dedicated administrative accounts,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+default service accounts,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+dormant accounts,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+ecr repository,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+eks service accounts,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+endpoint configuration,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+file-check,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+kubectl,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+kubelet config file,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+kubelet config.json,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+kubelet-args,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+network policy add-on,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+network policy enforcement,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+node,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+rbac controls,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+role based access control (rbac),ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+rotatecertificate,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+secrets management,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+service account tokens,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+updated audit procedure,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+vpc configuration,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,NA
+--authorization -mode,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+age,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+amazon ecr,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+amazon eks,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+audit logs,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+aws api,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+aws api requests,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+aws ecr image scanning,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+aws identity and access management (iam),ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+aws_region,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+cidr block for public endpoint access,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+cluster_endpoint,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+cluster_name,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+configuration file,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+containers wishing to share the host ipc namespace,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+control plane logging,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+create administrative boundaries between resources,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+create pod,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+default namespace,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+default value,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+eks cluster logging configuration,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+enable kubelet server certificate rotation,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+encryption,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+ensure that the rotatekubeletservercertificate argument is set to true (automated),ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+eventrecordqps,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+https load balancer,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+iam role,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+internal only - general condition keys,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kube,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubeadm.conf,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubeconfig,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet -auth=false,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet -config.json,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet configuration file ownership,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet configuration file permissions,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet server certificate rotation,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubelet.service,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubernetes api endpoint,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubernetes cluster,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+kubernetes service account,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+minimize the admission of containers wishing to share,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+my-pod-security-policy,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+namespaces,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+network policy,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+pod-security-policy,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+private endpoint,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+private endpoint access,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+privileged flag,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+ps,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+public endpoint access,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+references,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+remediation method 2,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+rotatekubeletservercertificate,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+s,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+service account,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+stat,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+systemctl,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+systemd,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+the default namespace should not be used,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+transit,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+vpc_config,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+wildcard use in roles and clusterroles,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,NA
+anonymous auth,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,not set to alwaysallow
+authentication,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,anonymous authentication disabled
+authentication,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,clientcafile
+cluster access manager api,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,manage and enforce access control for eks clusters
+cluster access manager api,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,direct management via api
+cluster access manager api,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,fine-grained access control
+cluster access manager api,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,immutable access entries
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,check kubelet status
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,enable audit logs
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,ensure anonymous auth is disabled
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,ensure authorization-mode is not set to alwaysallow
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,ensure kubelet configuration file ownership is set to root:root
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,ensure kubelet configuration file permissions are 644 or more restrictive
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,ensure kubelet kubeconfig ownership is set to root:root
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,use kubectl proxy when needed
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,use secure communication protocols (tls, wpa2, etc.)
+kubelet,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,verify kubelet process is running
+kubelet,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,public ip address
+kubelet,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,streamingconnectionidletimeout is not set to 0
+kubelet,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,streamingconnectionidletimeout is not set to 4h0m0s
+kubelet,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,the kubelet process is found in the kubelet -config.json file.
+private nodes,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,no public ips
+private nodes,ABSENT-IN-cis-r3-kdes.yaml,PRESENT-IN-cis-r2-kdes.yaml,use private networking
+private nodes,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,correctly
+private nodes,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,enabled
