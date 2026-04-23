@@ -86,9 +86,7 @@ def _extract_name_to_requirements(data: dict[str, Any]) -> dict[str, set[str]]:
         normalized_requirements: set[str] = set()
         for req in raw_requirements:
             if not isinstance(req, str) or not req.strip():
-                raise ValueError(
-                    f"Element '{element_key}' contains an invalid requirement entry."
-                )
+                continue  # Skip invalid requirement entries
             normalized_requirements.add(_normalize_requirement(req))
 
         result[normalized_name] = normalized_requirements
@@ -195,22 +193,27 @@ if __name__ == "__main__":
     run cell
     """
 
-    Path("outputs").mkdir(exist_ok=True)
+    for i in range(1, 4):
+        for j in range(i, 5):
+            print(f"{i} {j} ======================================")
+            # step 2 running
 
-    name_output = compare_element_names(
-        "data/IndividualCleanedAgain/cis-r1-kdes.yaml",
-        "data/IndividualCleanedAgain/cis-r2-kdes.yaml",
-        "outputs/name_differences12.txt"
-    )
+            Path("outputs").mkdir(exist_ok=True)
 
-    req_output = compare_element_names_and_requirements(
-        "data/IndividualCleanedAgain/cis-r1-kdes.yaml",
-        "data/IndividualCleanedAgain/cis-r2-kdes.yaml",
-        "outputs/requirement_differences12.txt"
-    )
+            name_output = compare_element_names(
+                f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+                f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+                f"outputs/name_differences{i}{j}.txt"
+            )
 
-    print("Names output:")
-    print(name_output)
-    print()
-    print("Requirements output:")
-    print(req_output)
+            req_output = compare_element_names_and_requirements(
+                f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+                f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+                f"outputs/requirement_differences{i}{j}.txt"
+            )
+
+            print("Names output:")
+            print(name_output)
+            print()
+            print("Requirements output:")
+            print(req_output)
