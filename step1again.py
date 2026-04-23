@@ -1,9 +1,18 @@
-
 import yaml
 import re
-from transformers import AutoTokenizer, AutoModelForCausalLM
 import os
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from dotenv import load_dotenv
+
+# =========================
+# CHECK GPU
+# =========================
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Using device:", device)
+
+if device.type == "cuda":
+    print("GPU:", torch.cuda.get_device_name(0))
 
 # =========================
 # LOAD MODEL (Gemma)
@@ -12,12 +21,19 @@ model_name = "google/gemma-3-1b-it"
 
 load_dotenv()
 HF_TOKEN = os.getenv("HF_TOKEN")
+
 tokenizer = AutoTokenizer.from_pretrained(model_name, token=HF_TOKEN)
+
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     token=HF_TOKEN,
-    device_map="auto"
-)
+    torch_dtype=torch.float16 if device.type == "cuda" else torch.float32
+).to(device)  # 🚨 FORCE GPU
+
+model.eval()
+
+# verify model device
+print("Model loaded on:", next(model.parameters()).device)
 
 # =========================
 # ZERO-SHOT PROMPT
@@ -50,29 +66,28 @@ TEXT:
 def run_llm(prompt: str) -> str:
     inputs = tokenizer(prompt, return_tensors="pt")
 
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=150,
-        temperature=0.5,
-        do_sample=True,
-        eos_token_id=tokenizer.eos_token_id
-    )
+    # 🚨 move tensors to GPU
+    inputs = {k: v.to(device) for k, v in inputs.items()}
+
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=150,
+            temperature=0.5,
+            do_sample=True,
+            eos_token_id=tokenizer.eos_token_id
+        )
 
     generated_tokens = outputs[0][inputs["input_ids"].shape[-1]:]
     return tokenizer.decode(generated_tokens, skip_special_tokens=True)
 
 # =========================
-# CLEAN LLM OUTPUT (IMPORTANT FIX)
+# CLEAN OUTPUT
 # =========================
 def extract_yaml(text: str) -> str:
-    # fix escaped newlines
     text = text.replace("\\n", "\n")
+    text = text.replace("```yaml", "").replace("```", "")
 
-    # remove markdown fences
-    text = text.replace("```yaml", "")
-    text = text.replace("```", "")
-
-    # try extracting yaml block if embedded
     match = re.search(r"(element\d+:.*)", text, re.DOTALL)
     if match:
         text = match.group(1)
@@ -104,7 +119,6 @@ def clean_kdes(kdes: dict) -> dict:
                 continue
             clean_reqs.append(r)
 
-        # remove duplicates
         clean_reqs = list(set(clean_reqs))
 
         if name or clean_reqs:
@@ -116,21 +130,17 @@ def clean_kdes(kdes: dict) -> dict:
     return cleaned
 
 # =========================
-# PROCESS ONE DOCUMENT
+# PROCESS DOCUMENT
 # =========================
 def process_document(text: str):
-    print("Processing full document...")
-
     prompt = zero_shot_prompt(text)
     output = run_llm(prompt)
 
-    # CLEAN OUTPUT (FIX YOUR ERROR)
     output = extract_yaml(output)
 
     try:
         data = yaml.safe_load(output)
         if not isinstance(data, dict):
-            print("Invalid YAML structure")
             return {}
     except Exception as e:
         print("YAML parsing failed:", e)
@@ -146,17 +156,14 @@ def save_yaml(data, file_name):
         yaml.dump(data, f, sort_keys=False)
 
 # =========================
-# RUN ALL FILES
+# RUN FILES
 # =========================
 def process_all_documents(file_paths):
     for path in file_paths:
-        print(f"\nProcessing {path}...")
+        print(f"Processing {path}...")
 
         with open(path, "r", encoding="utf-8") as f:
             text = f.read()
-
-        # safety only (NOT truncation for logic, just crash prevention)
-        # text = text[:30000]
 
         result = process_document(text)
 

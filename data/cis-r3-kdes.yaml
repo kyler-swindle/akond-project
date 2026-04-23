@@ -1,1 +1,319 @@
-{}
+kubelet configuration file ownership:
+  name: kubelet configuration file ownership
+  requirements:
+  - 644 or more restrictive
+kubelet configuration file permissions:
+  name: kubelet configuration file permissions
+  requirements:
+  - 644 or more restrictive
+anonymous auth:
+  name: Anonymous Auth
+  requirements:
+  - Not Enabled
+--authorization -mode:
+  name: --authorization -mode
+  requirements:
+  - AlwaysAllow
+client ca file:
+  name: Client CA File
+  requirements:
+  - Configured
+--read-only-port:
+  name: --read-only-port
+  requirements:
+  - Disabled
+s:
+  name: s
+  requirements:
+  - '64'
+containers wishing to share the host ipc namespace:
+  name: Containers wishing to share the host IPC namespace
+  requirements:
+  - Minimize the admission of
+eks cluster logging configuration:
+  name: EKS Cluster Logging Configuration
+  requirements:
+  - Enabled / Disabled
+amazon eks:
+  name: Amazon EKS
+  requirements:
+  - Enabled / Disabled
+control plane logging:
+  name: Control Plane Logging
+  requirements:
+  - Enabled / Disabled
+kubeconfig:
+  name: kubeconfig
+  requirements:
+  - /var/lib/kubelet/kubeconfig
+  - Set to
+stat:
+  name: stat
+  requirements:
+  - -c %U:%G /var/lib/kubelet/kubeconfig
+ps:
+  name: ps
+  requirements: []
+kubelet:
+  name: Kubelet
+  requirements:
+  - streamingConnectionIdleTimeout is not set to 4h0m0s
+  - The kubelet process is found in the kubelet -config.json file.
+  - streamingConnectionIdleTimeout is not set to 0
+  - public IP address
+configuration file:
+  name: Configuration file
+  requirements: []
+kubelet -config.json:
+  name: kubelet -config.json
+  requirements:
+  - The kubelet -config.json file exists.
+kubelet -auth=false:
+  name: kubelet -auth=false
+  requirements:
+  - The authentication setting for kubelet is disabled.
+kube:
+  name: kube
+  requirements: []
+authentication:
+  name: authentication
+  requirements:
+  - clientCAFile
+remediation method 2:
+  name: remediation method 2
+  requirements:
+  - Edit kubelet service file
+  - Ensure KUBELET_ARGS variable string
+default value:
+  name: default value
+  requirements:
+  - See the EKS documentation for the default value.
+references:
+  name: references
+  requirements:
+  - https://kubernetes.io/docs/reference/command -line-tools -reference/kubelet/
+systemd:
+  name: systemd
+  requirements:
+  - If using systemd
+eventrecordqps:
+  name: eventRecordQPS
+  requirements:
+  - The eventRecordQPS value should be a number.
+kubeadm.conf:
+  name: kubeadm.conf
+  requirements:
+  - The kubeadm.conf file should be reviewed.
+systemctl:
+  name: systemctl
+  requirements:
+  - The systemctl daemon -reload command should be executed.
+kubelet.service:
+  name: kubelet.service
+  requirements:
+  - The kubelet service should be restarted.
+kubelet server certificate rotation:
+  name: kubelet server certificate rotation
+  requirements:
+  - Automated
+ensure that the rotatekubeletservercertificate argument is set to true (automated):
+  name: Ensure that the RotateKubeletServerCertificate argument is set to true (Automated)
+  requirements:
+  - Automated
+enable kubelet server certificate rotation:
+  name: Enable kubelet server certificate rotation
+  requirements:
+  - Automated
+rotatekubeletservercertificate:
+  name: RotateKubeletServerCertificate
+  requirements: []
+create pod:
+  name: Create Pod
+  requirements: []
+kubernetes service account:
+  name: Kubernetes Service Account
+  requirements: []
+cluster access manager api:
+  name: Cluster Access Manager API
+  requirements:
+  - Fine-Grained Access Control
+  - Immutable Access Entries
+  - Direct Management via API
+aws identity and access management (iam):
+  name: AWS Identity and Access Management (IAM)
+  requirements:
+  - Scal
+pod-security-policy:
+  name: pod-security-policy
+  requirements:
+  - No privileged containers
+privileged flag:
+  name: privileged flag
+  requirements:
+  - 'True'
+my-pod-security-policy:
+  name: my-pod-security-policy
+  requirements:
+  - .securityContext.allowPrivilegeEsc
+transit:
+  name: Transit
+  requirements:
+  - Enc
+namespaces:
+  name: namespaces
+  requirements:
+  - Support for Kubernetes Authorization plugins.
+  - Ability to create additional namespaces.
+  - Isolation of resources within namespaces.
+  - The ability to create and manage namespaces.
+default namespace:
+  name: default namespace
+  requirements:
+  - The default namespace for objects with no other namespace.
+  - It is the default namespace for
+aws ecr image scanning:
+  name: AWS ECR Image Scanning
+  requirements:
+  - enables AWS ECS or third-party image scanning
+age:
+  name: age
+  requirements:
+  - '117'
+internal only - general condition keys:
+  name: Internal Only - General Condition Keys
+  requirements:
+  - The Condition element (or Condition block) lets you specify conditions in which
+    a statement is in effect. The Condition element is optional. You can build conditional
+    expressions that use condition operators, such as equals or less than, to match
+    the condition in the policy with values in the request.
+  - If you specify multiple Condition elements in a statement, or multiple keys in
+    a single Condition element
+amazon ecr:
+  name: Amazon ECR
+  requirements:
+  - Read-only access
+iam role:
+  name: IAM Role
+  requirements:
+  - Auditability
+  - Credential isolation
+  - Least privilege
+aws api requests:
+  name: AWS API Requests
+  requirements:
+  - Applications must sign their AWS API requests with AWS credentials.
+service account:
+  name: Service Account
+  requirements:
+  - Auditability
+  - '{''The IAM roles for service accounts feature provides the following benefits'':
+    None}'
+  - Credential isolation
+  - Least privilege
+aws api:
+  name: AWS API
+  requirements: []
+kubernetes api endpoint:
+  name: Kubernetes API Endpoint
+  requirements:
+  - Private Endpoint Access
+  - Public Endpoint Access
+cidr block for public endpoint access:
+  name: CIDR Block for Public Endpoint Access
+  requirements:
+  - Cannot include reserved addresses
+  - Maximum number of CIDR blocks
+private endpoint access:
+  name: Private Endpoint Access
+  requirements:
+  - Private Endpoint Access
+  - Enabled
+public endpoint access:
+  name: Public Endpoint Access
+  requirements:
+  - Public Endpoint Access
+  - Enabled
+cluster_endpoint:
+  name: cluster_endpoint
+  requirements:
+  - private endpoint access
+  - public IP address
+vpc_config:
+  name: VPC_CONFIG
+  requirements:
+  - private endpoint access
+  - public IP address
+cluster_name:
+  name: CLUSTER_NAME
+  requirements:
+  - private endpoint access
+  - public IP address
+aws_region:
+  name: AWS_REGION
+  requirements:
+  - private endpoint access
+  - public IP address
+https load balancer:
+  name: HTTPS Load Balancer
+  requirements:
+  - Apply host -based firewalls or port filtering tools on end systems, with a default
+    -deny rule that drops all traffic except those services and ports that are explicitly
+    allowed.
+  - '{''Profile Applicability'': ''Level''}'
+  - Encrypt traffic to HTTPS load balancers with TLS certificates.
+  - Ensure Only Approved Ports, Protocols and Services Are Running
+  - Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi
+    Protected Access 2 (WPA2) Enterprise or greater).
+wildcard use in roles and clusterroles:
+  name: wildcard use in Roles and ClusterRoles
+  requirements:
+  -     
+kubernetes cluster:
+  name: Kubernetes Cluster
+  requirements:
+  - Manage Kubernetes RBAC users with AWS IAMAuthenticator for Kubernetes or Upgrade
+    to AWS CLI v1.16.156 or greater
+  - Ensure clusters are created with Private Nodes
+  - Ensure Network Policy is Enabled and set as appropriate
+  - Encrypt traffic to HTTPS load balancers with TLS certificates (Manual)
+minimize the admission of containers wishing to share:
+  name: Minimize the admission of containers wishing to share
+  requirements:
+  - Do NOT use
+  - No explanations
+  - No markdown
+  - No empty requirements
+create administrative boundaries between resources:
+  name: Create administrative boundaries between resources
+  requirements:
+  - Do NOT use
+  - No explanations
+  - No markdown
+  - No empty requirements
+the default namespace should not be used:
+  name: The default namespace should not be used
+  requirements: []
+private endpoint:
+  name: Private Endpoint
+  requirements:
+  - Enabled
+  - Disabled
+private nodes:
+  name: Private Nodes
+  requirements:
+  - Enabled
+  - Correctly
+network policy:
+  name: Network Policy
+  requirements:
+  - Enabled
+  - Set as appropriate
+encryption:
+  name: Encryption
+  requirements:
+  - Encrypt traffic to HTTPS load balancers with TLS certificates
+audit logs:
+  name: Audit Logs
+  requirements:
+  - Collected and managed
+  - Enabled

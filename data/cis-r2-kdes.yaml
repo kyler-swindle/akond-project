@@ -1,1 +1,338 @@
-{}
+kubelet:
+  name: kubelet
+  requirements:
+  - Ensure that the kubelet configuration file has 644 or more restrictive permissions
+    (Automated)  
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
+     
+  - Use secure network management and communication protocols (e.g., 802.1X, Wi -Fi
+    Protected Access
+  - Ensure that the Anonymous Auth is Not Enabled (Automated)  
+  - ps -ef | grep kubelet
+  - Enable audit Logs (Automated)  
+  - kubectl proxy --port=8001
+  - Owner set to root:root
+  - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+     
+  - Ensure that the --authorization -mode argument is not set to AlwaysAllow (Automated)
+    
+  - Permissions set to 644 or more restrictive
+anonymous auth:
+  name: Anonymous Auth
+  requirements:
+  - Argument not set to AlwaysAllow
+  - Not enabled
+  - Configured
+client ca file:
+  name: Client CA File
+  requirements:
+  - (No specific requirements)
+  - Set to true
+  - Configured
+--read-only-port:
+  name: --read-only-port
+  requirements:
+  - (No specific requirements)
+  - Disabled
+default service accounts:
+  name: Default Service Accounts
+  requirements:
+  - Ensure that default service accounts are not actively used.
+service account tokens:
+  name: Service Account Tokens
+  requirements:
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Only mount Service Account Tokens where necessary.
+  - Automatically disable dormant accounts
+  - Review pod and service account objects in the cluster and ensure that the option
+    below is set, unless the resource explicitly requires this access.
+cluster access manager api:
+  name: Cluster Access Manager API
+  requirements:
+  - Streamline and enhance the management of access controls within EKS clusters.
+bind, impersonate and escalate permissions:
+  name: Bind, Impersonate and Escalate permissions
+  requirements:
+  - Limit the use of the Bind, Impersonate and
+benchmark:
+  name: Benchmark
+  requirements:
+  - Deploy the Benchmark applicable to the way settings are managed in the environment
+microsoft windows family of benchmarks:
+  name: Microsoft Windows Family of Benchmarks
+  requirements: []
+file -check:
+  name: file -check
+  requirements:
+  - 644 or more restrictive
+  - No requirement
+nsenter:
+  name: nsenter
+  requirements:
+  - No requirement
+ls -l /host:
+  name: ls -l /host
+  requirements:
+  - No requirement
+chmod 644:
+  name: chmod 644
+  requirements:
+  - No requirement
+internal only - general:
+  name: Internal Only - General
+  requirements:
+  - No requirement
+configure data access control:
+  name: Configure data access control
+  requirements: []
+kubelet config file:
+  name: Kubelet config file
+  requirements:
+  - 644 or more restrictive
+file -check -pod.yaml:
+  name: file -check -pod.yaml
+  requirements:
+  - 644 or more restrictive
+kube:
+  name: kube
+  requirements: []
+kubelet -config.json:
+  name: kubelet -config.json
+  requirements:
+  - sudo less /path/to/kubelet -config.json
+authentication:
+  name: authentication
+  requirements:
+  - Page 39
+  - '{''Internal Only - General  "authentication"'': {''anonymous'': {''enabled'':
+    False}}}'
+kubelet-args:
+  name: kubelet-args
+  requirements:
+  - --anonymous -auth=false
+kubectl:
+  name: kubectl
+  requirements:
+  - kubectl proxy --port=8001
+kubectl proxy:
+  name: kubectl proxy
+  requirements:
+  - No requirement
+node-name:
+  name: node-name
+  requirements:
+  - No requirement
+rotatecertificate:
+  name: RotateCertificate
+  requirements:
+  - 'True'
+kubelet.service:
+  name: kubelet.service
+  requirements: []
+kubelet config.json:
+  name: kubelet config.json
+  requirements:
+  - 'True'
+/etc/systemd/system/kubelet.service.d/10 -kubelet -args.conf:
+  name: /etc/systemd/system/kubelet.service.d/10 -kubelet -args.conf
+  requirements: []
+--rotatecertificate:
+  name: --RotateCertificate
+  requirements:
+  - 'True'
+/etc/systemd/system/kubelet.service.d/10 -kubelet-args.:
+  name: /etc/systemd/system/kubelet.service.d/10 -kubelet-args.
+  requirements: []
+node:
+  name: node
+  requirements:
+  - curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy /configz"
+  - kubectl get nodes
+dormant accounts:
+  name: Dormant Accounts
+  requirements:
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Automatically disable dormant accounts
+api server communication:
+  name: API Server Communication
+  requirements:
+  - Avoid mounting service account
+escalate:
+  name: escalate
+  requirements:
+  - Cluster admin
+impersonate:
+  name: impersonate
+  requirements:
+  - Cluster
+bind:
+  name: bind
+  requirements:
+  - Cluster
+pod-security.kubernetes.io/enforce:
+  name: pod-security.kubernetes.io/enforce
+  requirements: []
+cni plugin support:
+  name: CNI Plugin Support
+  requirements:
+  - supports network policies
+dedicated administrative accounts:
+  name: Dedicated Administrative Accounts
+  requirements:
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+secrets:
+  name: secrets
+  requirements:
+  - value
+secretfile:
+  name: secretfile
+  requirements:
+  - value
+envvars:
+  name: envvars
+  requirements:
+  - value
+mount:
+  name: mount
+  requirements:
+  - value
+pod:
+  name: pod
+  requirements:
+  - value
+secret:
+  name: secret
+  requirements: []
+amazon ecr image scan:
+  name: Amazon ECR Image Scan
+  requirements:
+  - UNDEFINED severity level
+  - UnsupportedImageError
+amazon ecr image scan configuration:
+  name: Amazon ECR Image Scan Configuration
+  requirements:
+  - Create a scan configuration
+ecr repository:
+  name: ECR Repository
+  requirements:
+  - arn:aws:ecr:us -east-1:123456789012
+  - arn:aws:ecr:us -east-1:123456789012:repository/my -repo
+condition:
+  name: Condition
+  requirements:
+  - aws:ResourceTag
+aws api calls:
+  name: AWS API Calls
+  requirements:
+  - No requirement
+cluster name:
+  name: Cluster Name
+  requirements:
+  - <requirement>
+endpoint public access:
+  name: Endpoint Public Access
+  requirements:
+  - <requirement>
+public access cidrs:
+  name: Public Access CIDRs
+  requirements:
+  - <requirement>
+private endpoint access:
+  name: Private Endpoint Access
+  requirements:
+  - <requirement>
+enable private endpoint access:
+  name: Enable Private Endpoint Access
+  requirements:
+  - <requirement>
+limit ip addresses:
+  name: Limit IP Addresses
+  requirements:
+  - <requirement>
+disable internet access:
+  name: Disable Internet Access
+  requirements: []
+ndpoint public access:
+  name: ndpoint Public Access
+  requirements:
+  - Disable access to the Kubernetes API from outside the node network if it is not
+    required.
+references:
+  name: References
+  requirements:
+  - https://docs.aws.amazon.com/eks/latest/userguide/cluster -endpoint.html  Page
+    131
+profile applicability:
+  name: Profile Applicability
+  requirements:
+  - Configure the EKS
+  - Allow public access from a specific set of nodes.
+  - Disable access to the Kubernetes API from outside the node network.
+  - Configure the EKS cluster endpoint to be private.
+private nodes:
+  name: Private Nodes
+  requirements:
+  - No outbound internet access
+  - Private Master IP Range
+  - Private IP Aliasing
+vpc configuration:
+  name: VPC Configuration
+  requirements:
+  - Private Subnets
+  - Private subnets not associated with a route table that has a route to an IGW
+  - No public IP assigned
+endpoint configuration:
+  name: Endpoint Configuration
+  requirements:
+  - Public Access CIDrs
+  - Endpoint Public Access = true
+  - Endpoint Private Access = true
+pod reject connections:
+  name: Pod Reject Connections
+  requirements:
+  - Reject any connections that are not allowed by any Network Policy.
+network policy add on:
+  name: Network Policy Add On
+  requirements:
+  - Automatically added when a cluster with Network Policy is created.
+  - Needs to be added prior to enabling Network Policy for existing clusters.
+cluster node rolling update:
+  name: Cluster Node Rolling Update
+  requirements:
+  - Increases memory footprint of kube -system process by 128MB and CPU usage by 30
+  - Rolling update of all cluster nodes during enabling/disabling Network Policy.
+  - Blocks other operations on the cluster until it has run to completion.
+role based access control (rbac):
+  name: Role Based Access Control (RBAC)
+  requirements:
+  - Defines and maintains role-based access control, through determining and documenting
+    the access rights necessary for each role within the enterprise to successfully
+    carry out its assigned duties.
+amazon eks control plane:
+  name: Amazon EKS Control Plane
+  requirements:
+  - Access control is configured in the Amazon EKS control plane.
+aws cli version 1.16.156 or later:
+  name: AWS CLI Version 1.16.156 or later
+  requirements:
+  - No need to install the AWS IAM Authenticator anymore.
+eks service accounts:
+  name: EKS Service Accounts
+  requirements:
+  -                                       
+                            
+ecr access:
+  name: ECR Access
+  requirements: []
+updated audit procedure:
+  name: updated audit procedure
+  requirements:
+  - recommendation 3.2.3
+  - recommendation 5.4.3
+  - recommendation 5.5.1
+  - recommendation 5.4.1
+updated description:
+  name: updated description
+  requirements:
+  - recommendation 5.
