@@ -1,18 +1,23 @@
-import subprocess
 from pathlib import Path
+
+import subprocess
 import zipfile
 import shutil
+import json
+
+# set this to your actual kubescape.exe path if not in PATH
+kubescapeFullPath =  r"C:\Users\displayname\.kubescape\kubescape.exe"
 
 extract_path = Path("debug_extracted_project_yamls")
 if extract_path.exists():
     shutil.rmtree(extract_path)
 extract_path.mkdir(parents=True, exist_ok=True)
 
-with zipfile.ZipFile("/content/project-yamls.zip", "r") as zf:
+with zipfile.ZipFile("data/project-yamls.zip", "r") as zf:
     zf.extractall(extract_path)
 
 cmd = [
-    "kubescape",
+    kubescapeFullPath,
     "scan",
     str(extract_path),
     "--format",
