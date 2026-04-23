@@ -1,7 +1,3 @@
-"""
-executor.py -- executes
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
