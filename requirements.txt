@@ -20,3 +20,6 @@ reportlab>=4.1.0
 
 # Binary packaging (dev only)
 pyinstaller>=6.5.0
+
+# Environment variables
+python-dotenv>=1.0.0
