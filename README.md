@@ -26,11 +26,13 @@ Task 4 is step4.py
 ## Use demo.py
 from instructions
 
+```
 python3 -m venv comp5700-venv 
 source comp5700-venv/bin/activate 
 pip install transformers datasets evaluate accelerate torch
 cd project
 python3 demo.py
+```
 
 # Deliverables
 ## Step 1
