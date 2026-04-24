@@ -190,7 +190,7 @@ if __name__ == "__main__":
     print(sys.argv)
 
     (i, j) = (sys.argv[1][10], sys.argv[2][10])
-    print(f"{i} {j} ======================================")
+    print(f"selected: {i} {j} ======================================")
 
     # step 2 running
     Path("outputs").mkdir(exist_ok=True)

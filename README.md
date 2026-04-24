@@ -16,12 +16,26 @@ pip install -r requirements.txt
 ```
 
 ## Running
-
 Task 1 is step1.py
 Task 2 is step2.py
 Task 3 is step3.py
 Task 4 is step4.py
 
+### Step 2 usage
+A helper script is provided at `step2run.bash` for running `step2.py` on two PDF inputs from the `data/` folder.
+
+To run Step 2:
+
+```bash
+chmod +x step2run.bash
+./step2run.bash cis-r1.pdf cis-r1.pdf
+```
+
+This script expects two filenames and runs:
+
+```bash
+venv/bin/python3 step2.py "data/<input_pdf_1>" "data/<input_pdf_2>"
+```
 
 ## Use demo.py
 from instructions
