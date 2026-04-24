@@ -82,7 +82,8 @@ In file `step3test.py`
 https://github.com/kyler-swindle/akond-project
 
 ### A GitHub Action file with logs of test case execution
-
+Github action log located at https://github.com/kyler-swindle/akond-project/actions
+github workflow file is located at `.github/workflows/run-test.yml`
 
 ### A binary that can be executed in a Python virtual environment
 File `step2run.sh`
