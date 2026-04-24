@@ -7,8 +7,19 @@ Members:
 Joshua Chen jzc0289@auburn.edu
 Kyler Swindle kas0183@auburn.edu
 
-LLM Used: 
-google/gemma-3-1b-it / Gemma-3-1B
+## Task 1 LLM
+
+Task 1 used `google/gemma-3-1b-it`, also referred to as Gemma-3-1B.
+
+## Source Files
+
+- Task 1 source code: `step1functions.py` and `step1.py`
+- Task 1 tests: `step1test.py`
+- Task 2 source code: `step2.py`
+- Task 2 runner: `step2run.sh`
+- Task 2 tests: `step2test.py`
+- Task 3 source code: `step3.py`
+- Task 3 tests: `step3test.py`
 
 ## Installation
 

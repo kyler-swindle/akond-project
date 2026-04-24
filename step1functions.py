@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys
 
 import yaml
@@ -67,9 +68,9 @@ TEXT:
 """
 
 # =========================
-# ONE-SHOT PROMPT
+# FEW-SHOT PROMPT
 # =========================
-def build_one_shot_prompt(chunk: str) -> str:
+def build_few_shot_prompt(chunk: str) -> str:
     return f"""
 Extract Key Data Elements (KDEs) and their requirements.
 
@@ -224,8 +225,8 @@ def merge_kdes(all_chunks):
 # =========================
 # PROCESS FILE
 # =========================
-def process_file(file_path, tokenizer, model):
-    print(f"\nProcessing {file_path}...")
+def process_file(file_path, tokenizer, model, prompt_builder=build_zero_shot_prompt, prompt_type="zero-shot"):
+    print(f"\nProcessing {file_path} with {prompt_type}...")
 
     with open(file_path, "r", encoding="utf-8") as f:
         text = f.read()
@@ -234,39 +235,74 @@ def process_file(file_path, tokenizer, model):
     print(f"Total chunks: {len(chunks)}")
 
     parsed_outputs = []
+    prompt_log_parts = []
+    raw_output_log_parts = []
 
     for i, chunk in enumerate(chunks):
-        print(f"Chunk {i+1}/{len(chunks)}")
+        chunk_number = i + 1
+        print(f"Chunk {chunk_number}/{len(chunks)}")
 
-        prompt = zero_shot_prompt(chunk)
-        output = run_llm(prompt, tokenizer, model)
+        prompt = prompt_builder(chunk)
 
-        # SAFE PRINT (no crash)
-        print("Output preview:", output[:200].encode("utf-8", errors="ignore").decode())
+        prompt_log_parts.append(
+            f"=== Chunk {chunk_number}/{len(chunks)} Prompt ===\n{prompt}"
+        )
 
-        output = extract_yaml(output)
+        raw_output = run_llm(prompt, tokenizer, model)
 
-        data = parse_yaml(output)
+        raw_output_log_parts.append(
+            f"=== Chunk {chunk_number}/{len(chunks)} LLM Output ===\n{raw_output}"
+        )
+
+        print(
+            "Output preview:",
+            raw_output[:200].encode("utf-8", errors="ignore").decode()
+        )
+
+        yaml_text = extract_yaml(raw_output)
+
+        data = parse_yaml(yaml_text)
         if data:
             parsed_outputs.append(data)
         else:
             print("⚠️ Skipped invalid YAML chunk")
 
+    safe_prompt_type = prompt_type.replace(" ", "-").replace("_", "-").lower()
+
+    output_log_file = (
+        str(file_path)
+        .replace(".txt", f"-{safe_prompt_type}-llm-output.txt")
+        .replace(".pdf", f"-{safe_prompt_type}-llm-output.txt")
+    )
+
+    write_llm_output_log(
+        output_file=output_log_file,
+        llm_name="google/gemma-3-1b-it",
+        prompt_type=prompt_type,
+        prompt_used="\n\n".join(prompt_log_parts),
+        llm_output="\n\n".join(raw_output_log_parts),
+    )
+
     merged = merge_kdes(parsed_outputs)
     return merged
-
 
 # =========================
 # SAVE YAML
 # =========================
-def save_yaml(data, input_file):
-    output_file = input_file.replace(".txt", "-kdes.yaml").replace(".pdf", "-kdes.yaml")
+def save_yaml(data, input_file, prompt_type="zero-shot"):
+    safe_prompt_type = prompt_type.replace(" ", "-").replace("_", "-").lower()
+
+    output_file = (
+        input_file
+        .replace(".txt", f"-{safe_prompt_type}-kdes.yaml")
+        .replace(".pdf", f"-{safe_prompt_type}-kdes.yaml")
+    )
 
     with open(output_file, "w", encoding="utf-8") as f:
         yaml.dump(data, f, sort_keys=False, allow_unicode=True)
 
     print(f"Saved: {output_file}")
-
+    return output_file
 
 # =========================
 # CONVERT PDF TO TXT
@@ -300,6 +336,37 @@ def pdf_to_txt(pdf_path: str) -> str:
 
     return text
 
+# =========================
+# WRITE TASK-1 LLM OUTPUT LOG
+# =========================
+
+
+def write_llm_output_log(
+    output_file,
+    llm_name,
+    prompt_type,
+    prompt_used,
+    llm_output,
+):
+    from pathlib import Path
+
+    output_path = Path(output_file)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    content = (
+        "*LLM Name*\n"
+        f"{llm_name}\n\n"
+        "*Prompt Used*\n"
+        f"{prompt_used}\n\n"
+        "*Prompt Type*\n"
+        f"{prompt_type}\n\n"
+        "*LLM Output*\n"
+        f"{llm_output}\n"
+    )
+
+    output_path.write_text(content, encoding="utf-8")
+    return output_path
+
 
 # =========================
 # MAIN
@@ -314,6 +381,24 @@ if __name__ == "__main__":
         "data/cis-r4.txt"
     ]
 
+    prompt_runs = [
+        ("zero-shot", build_zero_shot_prompt),
+        ("few-shot", build_few_shot_prompt),
+        ("chain-of-thought", build_chain_of_thought_prompt),
+    ]
+
     for file in files:
-        result = process_file(file, tokenizer, model)
-        save_yaml(result, file)
+        for prompt_type, prompt_builder in prompt_runs:
+            result = process_file(
+                file_path=file,
+                tokenizer=tokenizer,
+                model=model,
+                prompt_builder=prompt_builder,
+                prompt_type=prompt_type,
+            )
+
+            save_yaml(
+                data=result,
+                input_file=file,
+                prompt_type=prompt_type,
+            )

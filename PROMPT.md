@@ -1,6 +1,6 @@
 ## zero-shot
 ```
-def zero_shot_prompt(chunk: str) -> str:
+def build_zero_shot_prompt(chunk: str) -> str:
     return f"""
         Extract Key Data Elements (KDEs) and their requirements.
 
@@ -25,7 +25,7 @@ def zero_shot_prompt(chunk: str) -> str:
 
 ## few-shot
 ```
-def one_shot_prompt(chunk: str) -> str:
+def few_shot_prompt(chunk: str) -> str:
     return f"""
         Extract Key Data Elements (KDEs) and their requirements.
 
