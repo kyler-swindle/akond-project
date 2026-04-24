@@ -52,7 +52,7 @@ Located in `step1test.py`
 
 ---
 
-## Step 2
+## <u>Step 2</u>
 
 ### Two TEXT files as output
 
