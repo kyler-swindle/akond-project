@@ -89,9 +89,9 @@ A helper script is provided at `step2run.sh` for running `step2.py` on two PDF i
 
 ##### To run Step 2:
 
+First make it executable
 ```
 chmod +x step2run.sh
-./step2run.sh cis-r1.pdf cis-r1.pdf
 ```
 
 This script expects two filenames and runs:
@@ -99,6 +99,12 @@ This script expects two filenames and runs:
 ```
 ./step2run.sh "<input_pdf_1>" "<input_pdf_2>"
 ```
+
+Example:
+```
+./step2run.sh cis-r1.pdf cis-r1.pdf
+```
+
 ##### note: the /data/ folder will be appended automatically
 ##### note: run using wsl
 
