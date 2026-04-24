@@ -30,6 +30,8 @@ jobs:
         venv/bin/python3 -m pip install -r requirements.txt
 
     - name: Run Task-1 tests
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
         venv/bin/python3 step1test.py
 
