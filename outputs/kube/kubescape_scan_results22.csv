@@ -1,5 +1,5 @@
 FilePath,Severity,Control name,Failed resources,All Resources,Compliance score
-extracted_project_yamls,Medium,Prevent containers from allowing command execution,58,862,93.27146
+extracted_project_yamls,Medium,Prevent containers from allowing command execution,60,914,93.43545
 extracted_project_yamls,Medium,Roles with delete capabilities,176,862,79.58237
 extracted_project_yamls,High,Applications credentials in configuration files,44,552,92.028984
 extracted_project_yamls,Medium,Non-root containers,379,385,1.5584415
@@ -10,8 +10,8 @@ extracted_project_yamls,Low,Immutable container filesystem,304,385,21.038961
 extracted_project_yamls,Low,Configured readiness probe,294,385,23.636364
 extracted_project_yamls,Medium,Mount service principal,0,385,100.0
 extracted_project_yamls,Medium,Ingress and Egress blocked,338,422,19.905214
-extracted_project_yamls,Medium,Delete Kubernetes events,58,914,93.65427
-extracted_project_yamls,Medium,Automatic mapping of service account,142,609,76.68308
+extracted_project_yamls,Medium,Delete Kubernetes events,56,862,93.50348
+extracted_project_yamls,Medium,Automatic mapping of service account,153,609,74.87685
 extracted_project_yamls,Medium,Administrative Roles,20,862,97.67981
 extracted_project_yamls,High,Host PID/IPC privileges,10,385,97.402596
 extracted_project_yamls,High,HostNetwork access,12,385,96.88312

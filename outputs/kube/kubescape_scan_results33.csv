@@ -1,6 +1,6 @@
 FilePath,Severity,Control name,Failed resources,All Resources,Compliance score
-extracted_project_yamls,Medium,Prevent containers from allowing command execution,58,862,93.27146
-extracted_project_yamls,Medium,Roles with delete capabilities,183,914,79.97812
+extracted_project_yamls,Medium,Prevent containers from allowing command execution,60,914,93.43545
+extracted_project_yamls,Medium,Roles with delete capabilities,176,862,79.58237
 extracted_project_yamls,High,Applications credentials in configuration files,44,552,92.028984
 extracted_project_yamls,Medium,Non-root containers,379,385,1.5584415
 extracted_project_yamls,Low,Access Kubernetes dashboard,0,1247,100.0
