@@ -34,8 +34,12 @@ jobs:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
         venv/bin/python3 step1test.py
-
+    
     - name: Run Task-2 tests
+      run: |
+        venv/bin/python3 step2test.py
+
+    - name: Run Task-2 bash tests
       run: |
         chmod +x step2run.sh
         ./step2run.sh cis-r1.pdf cis-r2.pdf
