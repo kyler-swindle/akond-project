@@ -5,6 +5,7 @@ import re
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import os
 from dotenv import load_dotenv
+import fitz
 
 # =========================
 # LOAD MODEL
@@ -43,7 +44,7 @@ def chunk_text(text, chunk_size=1500, overlap=200):
 # =========================
 # ZERO-SHOT PROMPT
 # =========================
-def zero_shot_prompt(chunk: str) -> str:
+def build_zero_shot_prompt(chunk: str) -> str:
     return f"""
 Extract Key Data Elements (KDEs) and their requirements.
 
@@ -68,7 +69,7 @@ TEXT:
 # =========================
 # ONE-SHOT PROMPT
 # =========================
-def one_shot_prompt(chunk: str) -> str:
+def build_one_shot_prompt(chunk: str) -> str:
     return f"""
 Extract Key Data Elements (KDEs) and their requirements.
 
@@ -102,7 +103,7 @@ TEXT:
 # =========================
 # CHAIN OF THOUGHT PROMPT
 # =========================
-def cot_prompt(chunk: str) -> str:
+def build_chain_of_thought_prompt(chunk: str) -> str:
     return f"""
 Extract Key Data Elements (KDEs) and their requirements.
 
@@ -265,6 +266,39 @@ def save_yaml(data, input_file):
         yaml.dump(data, f, sort_keys=False, allow_unicode=True)
 
     print(f"Saved: {output_file}")
+
+
+# =========================
+# CONVERT PDF TO TXT
+# =========================
+def pdf_to_txt(pdf_path: str) -> str:
+    """
+    Convert PDF to text, save as .txt in same folder, and return the text content.
+    """
+
+    pdf_path = os.path.join("data", pdf_path)
+
+    # Open PDF
+    doc = fitz.open(pdf_path)
+
+    # Extract text from all pages
+    text = ""
+    for page in doc:
+        text += page.get_text()
+
+    # Close PDF
+    doc.close()
+
+    # Create output path (same folder, replace .pdf with .txt)
+    txt_path = pdf_path.replace(".pdf", ".txt")
+
+    # Save text to file
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+    print(f"Converted {pdf_path} to {txt_path}")
+
+    return text
 
 
 # =========================
