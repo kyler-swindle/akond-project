@@ -19,6 +19,9 @@ jobs:
       with:
         python-version: "3.10"
 
+    - name: Show Python version
+      run: python --version
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -26,12 +29,12 @@ jobs:
 
     - name: Run Task-1 tests
       run: |
-        pytest tests/task1
+        venv/bin/python3 step1test.py
 
     - name: Run Task-2 tests
       run: |
-        pytest tests/task2
+        ./step2test.bash cis-r1.pdf cis-r2.pdf
 
     - name: Run Task-3 tests
       run: |
-        pytest tests/task3
+        venv/bin/python3 step3test.py
