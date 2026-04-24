@@ -37,6 +37,7 @@ jobs:
 
     - name: Run Task-2 tests
       run: |
+        chmod +x step2run.sh
         ./step2run.sh cis-r1.pdf cis-r2.pdf
 
     - name: Run Task-3 tests
