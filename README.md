@@ -55,11 +55,13 @@ Located in `step1test.py`
 ## <u>Step 2</u>
 
 ### Two TEXT files as output
-
+text files pairs are located in 
 
 ### Source code for the three functions
+In file `step2.py`
 
 ### Test cases for the three functions. One test case for each of the three functions
+In file `step2test.py`
 
 ---
 
