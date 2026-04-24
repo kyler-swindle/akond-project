@@ -61,7 +61,6 @@ Located in `step1test.py`
 
 ### Test cases for the three functions. One test case for each of the three functions
 
-
 ---
 
 ## <u>Step 3</u>
