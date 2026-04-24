@@ -37,7 +37,7 @@ jobs:
 
     - name: Run Task-2 tests
       run: |
-        ./step2test.bash cis-r1.pdf cis-r2.pdf
+        ./step2run.sh cis-r1.pdf cis-r2.pdf
 
     - name: Run Task-3 tests
       run: |

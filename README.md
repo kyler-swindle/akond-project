@@ -83,22 +83,22 @@ https://github.com/kyler-swindle/akond-project
 
 
 ### A binary that can be executed in a Python virtual environment
-File `step2run.bash`
+File `step2run.sh`
 
-##### Instructions for `step2run.bash`
-A helper script is provided at `step2run.bash` for running `step2.py` on two PDF inputs from the `/data/` folder.
+##### Instructions for `step2run.sh`
+A helper script is provided at `step2run.sh` for running `step2.py` on two PDF inputs from the `/data/` folder.
 
 ##### To run Step 2:
 
-```bash
-chmod +x step2run.bash
-./step2run.bash cis-r1.pdf cis-r1.pdf
+```
+chmod +x step2run.sh
+./step2run.sh cis-r1.pdf cis-r1.pdf
 ```
 
 This script expects two filenames and runs:
 
-```bash
-./step2run.bash "<input_pdf_1>" "<input_pdf_2>"
+```
+./step2run.sh "<input_pdf_1>" "<input_pdf_2>"
 ```
 ##### note: the /data/ folder will be appended automatically
 ##### note: run using wsl
