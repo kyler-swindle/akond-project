@@ -1,9 +1,9 @@
-COMP 5700
+# COMP 5700 Group Project
 
-Group:
+#### Group Name:
 akond-project
 
-Members:
+#### Members:
 Joshua Chen jzc0289@auburn.edu
 Kyler Swindle kas0183@auburn.edu
 
@@ -21,15 +21,11 @@ Task 2 is step2.py
 Task 3 is step3.py
 Task 4 is step4.py
 
-## Use demo.py
-from instructions
-
+#### Setting up venv
 ```
 python3 -m venv comp5700-venv 
 source comp5700-venv/bin/activate 
-pip install transformers datasets evaluate accelerate torch
-cd project
-python3 demo.py
+pip install -r requirements.txt
 ```
 ---
 
