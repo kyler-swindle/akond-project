@@ -7,9 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  test-step1:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -18,9 +17,6 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
-
-    - name: Show Python version
-      run: python --version
 
     - name: Install dependencies
       run: |
@@ -31,9 +27,41 @@ jobs:
       run: |
         venv/bin/python3 step1test.py
 
+  test-step2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
     - name: Run Task-2 tests
       run: |
         ./step2test.bash cis-r1.pdf cis-r2.pdf
+
+  test-step3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Run Task-3 tests
       run: |
