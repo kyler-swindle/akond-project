@@ -61,6 +61,7 @@ def one_shot_prompt(chunk: str) -> str:
 ```
 
 ## chain-of-thought
+```
 def cot_prompt(chunk: str) -> str:
     return f"""
         Extract Key Data Elements (KDEs) and their requirements.
@@ -91,3 +92,4 @@ def cot_prompt(chunk: str) -> str:
         TEXT:
         {chunk}
     """
+```
