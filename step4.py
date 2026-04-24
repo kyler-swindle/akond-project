@@ -4,9 +4,10 @@ import subprocess
 import zipfile
 import shutil
 import json
+import os
 
 # set this to your actual kubescape.exe path if not in PATH
-kubescapeFullPath =  r"C:\Users\displayname\.kubescape\kubescape.exe"
+kubescapeFullPath = os.environ.get("KUBESCAPE_PATH", "kubescape")
 
 extract_path = Path("debug_extracted_project_yamls")
 if extract_path.exists():

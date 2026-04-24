@@ -7,6 +7,9 @@ Members:
 Joshua Chen jzc0289@auburn.edu
 Kyler Swindle kas0183@auburn.edu
 
+LLM Used: 
+google/gemma-3-1b-it / Gemma-3-1B
+
 ## Installation
 
 To install the required dependencies, run:
@@ -45,7 +48,7 @@ we put our prompts in here
 stored in `/data/IndividualCleanedAgain/`
 
 ### Source code for six functions
-Inside of the `step1new.py`
+Inside of the `step1functions.py`
 
 ### Test cases for six functions
 Located in `step1test.py`

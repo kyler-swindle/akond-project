@@ -5,11 +5,12 @@ from typing import Iterable
 import json
 import subprocess
 import zipfile
+import os
 
 import pandas as pd
 
 # set this to your actual kubescape.exe path if not in PATH
-kubescapeFullPath =  r"C:\Users\displayname\.kubescape\kubescape.exe"
+kubescapeFullPath = os.environ.get("KUBESCAPE_PATH", "kubescape")
 # kubescapeFullPath =  "kubescape"
 
 
