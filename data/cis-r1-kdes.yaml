@@ -1,683 +1,356 @@
-client ca file:
-  name: Client CA File
+identity and access management (iam):
+  name: Identity and Access Management (IAM)
   requirements:
-  - Ensure that a Client CA File is Configured (Manual)
-pod security policies:
-  name: Pod Security Policies
+  - Prefer using dedicated EKS Service Accounts (Manual)
+eks cluster audit logs:
+  name: EKS Cluster Audit Logs
   requirements:
-  - Minimize the admission of root containers (
-  - Minimize the admission of containers wishing to share the host network namespace
-    (Automated)
-  - Minimize the admission of containers wishing to share the host IPC namespace (Automated)
-  - Minimize the admission of privileged containers (Automated)
-  - Minimize the admission of containers wishing to share the host process ID namespace
-    (Automated)
-  - Minimize the admission of containers with allowPrivilegeEscalation (Automated)
-manual admission control:
-  name: Manual Admission Control
+  - Enable audit Logs (Manual)
+cloudwatch log group:
+  name: CloudWatch Log Group
   requirements:
-  - Minimize the admission of containers with capabilities assigned
-  - Ensure that all Namespaces have Network Policies defined
-automated admission control:
-  name: Automated Admission Control
-  requirements:
-  - Ensure that all Namespaces have Network Policies defined
-  - Ensure that all CNI plugin supports network policies.
-secrets management:
-  name: Secrets Management
-  requirements:
-  - Prefer using secrets as files over secrets as environment variables
-  - Consider external secret storage
-extensible admission control:
-  name: Extensible Admission Control
-  requirements: []
-kubernetes security controls:
-  name: Kubernetes Security Controls
-  requirements:
-  - Manage Kubernetes secrets.
-  - Implement container image scanning.
-  - Update Kubernetes with security patches.
-  - Implement network policies.
-  - Monitor Kubernetes events.
-  - Audit Kubernetes configuration.
-  - Secure Kubernetes access.
-  - Monitor Kubernetes for vulnerabilities.
-  - Manage Kubernetes nodes.
-  - Identify and implement security controls for Kubernetes.
-aws compliance programs:
-  name: AWS Compliance Programs
-  requirements:
-  - Security in the cloud – To learn about
+  - Exported to a CloudWatch Log Group for persistence
 api server audit logs:
   name: API Server Audit Logs
   requirements:
+  - Record all accepted and rejected requests in the cluster
+enable audit logs (manual):
+  name: Enable Audit Logs (Manual)
+  requirements:
+  - Level 1
+audit logs:
+  name: Audit Logs
+  requirements: []
+amazon eks cluster logging:
+  name: Amazon EKS Cluster Logging
+  requirements:
   - Enabled
-kubeconfig file:
-  name: kubeconfig file
+amazon eks control plane logging:
+  name: Amazon EKS Control Plane Logging
+  requirements:
+  - Enabled
+amazon eks authenticator logging:
+  name: Amazon EKS Authenticator Logging
+  requirements:
+  - Enabled
+amazon eks controller manager logging:
+  name: Amazon EKS Controller Manager Logging
+  requirements:
+  - Enabled
+amazon eks scheduler logging:
+  name: Amazon EKS Scheduler Logging
+  requirements:
+  - Enabled
+amazon eks default control plane logging:
+  name: Amazon EKS Default Control Plane Logging
+  requirements:
+  - Disabled
+kubelet-config.json:
+  name: kubelet-config.json
+  requirements:
+  - '644'
+kubelet status:
+  name: kubelet status
+  requirements:
+  - Active
+kubelet permissions:
+  name: kubelet permissions
+  requirements:
+  - 644 or more restrictive
+kubelet config file location:
+  name: kubelet config file location
+  requirements:
+  - /etc/kubernetes/kubelet/kubelet-config.json
+kubelet config file permissions:
+  name: kubelet config file permissions
   requirements:
   - 644 or more restrictive
 kubelet:
   name: kubelet
   requirements:
-  - '{''owned'': ''root:root''}'
-  - It provides a mechanism
-  - Verify that the "RotateKubeletServerCertificate" feature gate exists in the Kubelet
-    config.
-  - It provides a mechanism for security to be created and destroyed.
-  - Kubelets can manage iptables based on networking options
-  - Kubelets manage iptables on
-  - '{''Default Value'': ''See the EKS documentation for the default value.''}'
-  - No override of hostnames
-  - The Kubelet process is a core component of Kubernetes.
-  - Set the local proxy port and node name for the api configz endpoint.
-  - It provides a mechanism for scaling to be created and destroyed.
-  - Disable the read-only port
-  - Restart the kubelet service
-  - It provides a mechanism for pods to be created and destroyed.
-  - Kubelets can manage iptables on the system
-  - Systemd is required
-  - It is responsible for managing the cluster.
-  - Check the service status
-  - Check status
-  - Kubelets keep iptables in sync with pods networking configuration
-  - Kubelets can automatically manage iptables
-  - It provides a mechanism for monitoring to be created and destroyed.
-  - '{''Active'': ''active (running) since..''}'
-  - It provides a mechanism for logging to be created and destroyed.
-  - Ensure the Kubelet process is running on each node.
-  - Kubelets manage iptables on the system
-  - Configure kubelet service file
-  - kubeconfig file permissions are set to 644 or more restrictive
-  - It provides a mechanism for services to be created and destroyed.
-  - It provides a mechanism for nodes to be managed.
-  - Ensure that the kubelet process exists
-  - Kubelet manages iptables
-  - Check the Kubelet config file for the --rotate-kubelet-server-certificate argument.
-  - Systemctl status kubelet
-  - Verify that the --rotate-kubelet-server-certificate executable argument is set
-    to true.
-  - Systemctl restart kubelet
+  - Ensure only network ports, protocols, and services listening on a system with
+    validated business needs, are running on each system.
+  - --hostname-override is not set
+  - Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi
+    Protected Access 2 (WPA2) Enterprise or greater).
+  - '[''eventRecordQPS=5'']'
+authentication:
+  name: authentication
+  requirements:
+  - <requirement>
+kubelet service file:
+  name: kubelet service file
+  requirements:
+  - <requirement>
+client-ca-file:
+  name: client-ca-file
+  requirements:
+  - <requirement>
+systemd:
+  name: systemd
+  requirements:
+  - <requirement>
+systemctl:
+  name: systemctl
+  requirements:
+  - <requirement>
 kubelet service:
   name: kubelet service
   requirements:
-  - exists
-  - contains
-  - read-only-port=0
-  - Running
-kubelet-config.json:
-  name: kubelet-config.json
+  - <requirement>
+default value:
+  name: default value
   requirements:
-  - 'True'
-  - <path/to/client-ca-file>
-  - root:root
-  - /etc/kubernetes/kubelet/kubelet-config.json
-  - file provided to the kubelet service with the --config argument
-  - /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
-authorizationmode:
-  name: AuthorizationMode
-  requirements:
-  - Webhook
-kubelet-args.conf:
-  name: kubelet-args.conf
-  requirements:
-  - The file is for operating systems using systemd, such as the Amazon EKS Optimised
-    Amazon Linux or Bottlerocket AMIs, and invokes the systemctl command.
-  - Configuration file for kubelet
-  - The file is for operating systems using systemd, such as the
-  - The file is located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
-  - does not set --RotateCertificate executable argument to false
-kubelet-:
-  name: kubelet-
-  requirements: []
-kubelet config file:
-  name: Kubelet Config File
-  requirements:
-  - exists
-  - contains
-  - read-only-port=0
-kubelet configuration:
-  name: Kubelet Configuration
-  requirements:
-  - exists
-  - contains
-  - read-only-port=0
-read only port:
-  name: Read Only Port
-  requirements: []
-remediation method 3:
-  name: Remediation Method 3
-  requirements:
-  - By extracting the live configuration
-hostname_port:
-  name: HOSTNAME_PORT
-  requirements:
-  - HOSTNAME_PORT=localhost:8001
-  - localhost:8001
-  - No explanation
-  - export HOSTNAME_PORT=localhost:8001
-  - (example host and port number)
-node_name:
-  name: NODE_NAME
-  requirements:
-  - ip-192.168.31.226.ec2.internal
-  - (example node name from "kubectl get nodes")
-  - NODE_NAME=ip-192.168.31.226.ec2.internal
-  - No explanation
-  - export NODE_NAME=ip-192.168.31.226.ec2.internal
-kernel parameters:
-  name: Kernel Parameters
-  requirements:
-  - Protect kernel defaults
-ip-192.168:
-  name: ip-192.168
-  requirements: []
-ssh:
-  name: SSH
-  requirements:
-  - Not configurable
-https:
-  name: HTTPS
-  requirements:
-  - Not configurable
-aws:
-  name: AWS
-  requirements:
-  - Not configurable
-eventrecordqps:
-  name: eventRecordQPS
-  requirements:
-  - '5'
-ar:
-  name: ar
+  - <requirement>
+--make-iptables-util-chains:
+  name: --make-iptables-util-chains
   requirements:
   - 'True'
 --config:
   name: --config
-  requirements:
-  - cat /etc/kubernetes/kubelet/kubelet-config.json
-rotatecertificate:
-  name: RotateCertificate
-  requirements:
-  - 'True'
-kubelet.service:
-  name: kubelet.service
-  requirements:
-  - does not set --RotateCertificate executable argument to false
-rotatekubeletservercertificate:
-  name: RotateKubeletServerCertificate
-  requirements:
-  - Verify that the "Rotate
-rotate-kubelet-server-certificate:
-  name: rotate-kubelet-server-certificate
   requirements: []
-kubelet-configuration-change:
-  name: kubelet-configuration-change
+--configz:
+  name: --configz
   requirements: []
-bottlerocket:
-  name: Bottlerocket
+--help:
+  name: --help
+  requirements: []
+--:
+  name: --
+  requirements: []
+node:
+  name: node
   requirements:
-  - security settings configured by default
-  - container runtime pre-installed
-  - minimal setup
-  - automatic updates
-rbac and service accounts:
-  name: RBAC and Service Accounts
+  - '[''eventRecordQPS=5'']'
+ip-192.168.31.226.ec2.internal:
+  name: ip-192.168.31.226.ec2.internal
   requirements:
-  - Ensure that the cluster-admin role is only used where and when needed.
-rbac role cluster-admin:
-  name: RBAC Role Cluster-Admin
+  - '[''eventRecordQPS=5'']'
+localhost:8001:
+  name: localhost:8001
+  requirements: []
+kubectl proxy:
+  name: kubectl proxy
   requirements:
-  - cluster-admin
-establish and maintain a secure configuration process:
-  name: Establish and Maintain a Secure Configuration Process
+  - No requirement
+podsecuritypolicy:
+  name: PodSecurityPolicy
   requirements:
-  - v7
-  - ● ● ●
-  - Review and update documentation annually, or when significant enterprise changes
-    occur that could impact this Safeguard.
-  - Establish and maintain a secure configuration process for enterprise assets (end-user
-    devices, including portable and mobile, non-computing/IoT devices, and servers)
-    and software (operating systems and applications).
-pod:
-  name: Pod
+  - no hostPID sharing
+  - ensure that the PSP is not defined
+  - spec.hostPID is not set
+psp:
+  name: PSP
   requirements:
-  - Create pods
+  - at least one PSP with no hostPID sharing
+rbac:
+  name: RBAC
+  requirements:
+  - no privileged
+  - no RBAC controls
+  - check for privileged
+ne podsecuritypolicy:
+  name: ne PodSecurityPolicy
+  requirements:
+  - no privilege escalation
+  - no setuid binaries
+ig 1:
+  name: IG 1
+  requirements:
+  - no privileged
+  - IG 1
 ig 2:
   name: IG 2
   requirements:
-  - Configure default service accounts to not provide service account tokens and without
-    explicit rights assignments.
-  - Limit access to scripting tools to only administrative or development users.
+  - no privileged
+  - IG 2
 ig 3:
   name: IG 3
   requirements:
-  - Reassess bi-annually, or more frequently.
-  - ● v7 4.7 Limit Access to Script Tools  Limit access to scripting tools (such as
-    Microsoft PowerShell and Python) to only administrative or development users with
-    the need to access those capabilities.
-v8:
-  name: v8
+  - IG 3
+istrative accounts:
+  name: istrative Accounts
   requirements:
-  - Use technical controls, such as digital signatures and version
-serviceaccount:
-  name: ServiceAccount
+  - No requirement
+cis controls:
+  name: CIS Controls
   requirements:
-  - '[{''Audit'': ''Review the rights assigned to the default service account and
-    ensure that it has no roles or cluster roles bound to it apart from the defaults.''}]'
-  - '[{''AutomountServiceAccountToken'': False}]'
-  - '[{''Remediation'': ''Create explicit service accounts wherever a Kubernetes workload
-    requires specific access to the Kubernetes API server.''}]'
-  - '[''Kubernetes API requires an explicit service account to be created.'']'
-systemmaster:
-  name: SystemMaster
-  requirements: []
-eks.privileged:
-  name: eks.privileged
-  requirements:
-  - 'True'
-pod security policy:
-  name: Pod Security Policy
-  requirements:
-  - '[''Pod Security Policies'']'
-pod security policy - default:
-  name: Pod Security Policy - Default
-  requirements:
-  - '[''Pod Security Policies'']'
-pod security policies - enabling pod security policies:
-  name: Pod Security Policies - Enabling Pod Security Policies
-  requirements: []
-ptrace:
-  name: ptrace
-  requirements:
-  - Access to ptrace capabilities this can be used to escalate privileges outside
-    of the container.
-kubectl get psp:
-  name: kubectl get psp
-  requirements:
-  - privileged is enabled
-network namespace:
-  name: network namespace
-  requirements:
-  - No generally permit containers to be run with the hostNetwork flag set to true.
-  - At least one PodSecurityPolicy (PSP) defined which does not permit containers
-    to share the host network namespace.
-hostnetwork:
-  name: hostNetwork
-  requirements:
-  - To run containers which require hostNetwork, this should be defined in a separate
-    PSP and you should carefully check RBAC controls to ensure that only limited service
-    accounts and users are given permission to access that PSP. அறிவுறுத்தலின்படி,
-    பின்வரும் KDEகளைப் பெறவும்
-use of dedicated administrative accounts:
-  name: Use of Dedicated Administrative Accounts
-  requirements:
-  - This account should only be used for administrative activities and not internet
-    browsing, email, or similar activities.
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for network policies.
   - Ensure that all users with administrative account access use a dedicated or secondary
     account for elevated activities.
-minimize the admission of root containers (automated):
-  name: Minimize the admission of root containers (Automated)
-  requirements:
-  - '{''Rationale'': ''Containers may run as any Linux user. Containers which run
-    as the root user, whilst constrained by Container Runtime security features still
-    have a escalated likelihood of container breakout.''}'
-  - Ideally, all containers should run as a defined
-  - Do not generally permit containers to be run as the root user.
-ties:
-  name: Ties
-  requirements: []
-network policy:
-  name: Network Policy
-  requirements:
-  - Network policies are used to isolate traffic in your cluster network.
+  - Restrict administrator privileges to dedicated administrator accounts on enterprise
+    assets.
 cni plugin:
   name: CNI Plugin
   requirements:
+  - Namespaces have Network Policies defined
+  - '{''Profile Applicability'': [''Level 1'', {''Description'': ''There are''}]}'
+  - CNI plugin supports network policies.
   - Supports network policies
-  - Prefer using secrets as files over secrets as environment variables
-  - The CNI plugin in
-  - Ensures that all Namespaces have Network Policies defined
-  - The CNI plugin in use determines the network policy support.
-application patch management:
-  name: Application Patch Management
+encrypt sensitive data in transit:
+  name: Encrypt Sensitive Data in Transit
   requirements:
-  - Perform automated application updates on enterprise assets through automated patch
-    management.
-network policy definition:
-  name: Network Policy Definition
+  - External secrets storage (Manual)
+  - Transport Layer Security (TLS) and OpenSSH
+encrypt all sensitive information in transit:
+  name: Encrypt All Sensitive Information in Transit
   requirements:
-  - Use network policies to isolate traffic in your cluster network.
-firewall management:
-  name: Firewall Management
+  - Consider external secrets storage (Manual)
+  - Encryption all sensitive information in transit
+encrypt all sensitive information at rest:
+  name: Encrypt All Sensitive Information at Rest
   requirements:
-  - v7 14.1 Segment the network based on sensitivity
-secrets:
-  name: Secrets
-  requirements:
-  - environment variables
-environment variables:
-  name: Environment Variables
-  requirements:
-  - environment variables
-mount secrets:
-  name: Mount Secrets
-  requirements:
-  - mount secrets
-secret storage:
-  name: Secret Storage
-  requirements:
-  - secret storage
-external secrets storage:
-  name: External Secrets Storage
+  - Requires a secondary authentication mechanism not integrated into the operating
+    system
+  - Encrypt all sensitive information at rest
+consider external secret storage (manual):
+  name: Consider external secret storage (Manual)
   requirements: []
-default:
-  name: default
+pics:
+  name: pics
   requirements:
-  - No requirements
-network boundaries:
-  name: Network Boundaries
-  requirements:
-  - Maintain an up-to-date inventory of all of the organization's network boundaries.
-security contexts:
-  name: Security Contexts
-  requirements:
-  - Apply Security Context to Your Pods and Containers
-pod security contexts:
-  name: Pod Security Contexts
-  requirements:
-  - Configure the security context for your pods, containers, and volumes.
-container security contexts:
-  name: Container Security Contexts
-  requirements:
-  - Configure the security context for your containers, volumes, and pods.
-inventory:
-  name: Inventory
-  requirements: []
-cluster:
-  name: cluster
-  requirements:
-  - cluster
-kubernetes service:
-  name: kubernetes service
-  requirements:
-  - '{''Remediation'': ''Ensure that namespaces are created to allow for appropriate
-    segregation of Kubernetes resources and that all new resources are created in
-    a specific namespace.''}'
-navigation bar:
-  name: Navigation bar
-  requirements:
-  - 3. In the navigation pane, choose Repositories.
-  - 4. On the Repositories page, choose the repository that contains the image to
-    scan.
-  - 5. On the Images page, select the image to scan and then choose Scan.
-  - Choose the Region to create your repository in.
-region:
-  name: Region
-  requirements:
-  - 3. In the navigation pane, choose Repositories.
   - No requirement
-  - 4. On the Repositories page, choose the repository that contains the image to
-    scan.
-  - '5.0'
-ecr:createrepository:
-  name: ecr:CreateRepository
+like namespace best practices and policies applied to pod objects in the cluster.:
+  name: like namespace best practices and policies applied to pod objects in the cluster.
   requirements:
-  - Amazon ECR CreateRepository API operation
-amazon ecr condition keys:
-  name: Amazon ECR Condition Keys
+  - No requirement
+image scan findings:
+  name: Image Scan Findings
+  requirements:
+  - UNDEFINED severity level
+  - UnsupportedImageError
+cve source:
+  name: CVE Source
+  requirements:
+  - undefined
+image scanning support:
+  name: Image Scanning Support
+  requirements:
+  - Docker scratch image
+  - Amazon Linux, Amazon Linux 2, Debian, Ubuntu, CentOS, Oracle Linux, Alpine, RHEL
+    Linux distributions
+amazon ecr console:
+  name: Amazon ECR Console
+  requirements:
+  - API
+  - AWS CLI
+  - Display image details
+amazon ecr:
+  name: Amazon ECR
+  requirements:
+  - Access to Amazon ECR
+nodeinstancerole:
+  name: NodeInstanceRole
+  requirements:
+  - IAM Policy Permissions for NodeInstanceRole
+read-only access to images:
+  name: Read-only access to images
+  requirements:
+  - Minimum required permission level to interact with the cluster
+amazon eks worker node iam role:
+  name: Amazon EKS worker node IAM role
+  requirements:
+  - IAM Policy Permissions for Amazon EKS worker node
+amazon ecr images:
+  name: Amazon ECR images
+  requirements:
+  - Access
+private access:
+  name: Private Access
+  requirements:
+  - authorized IPs
+kubernetes engine:
+  name: Kubernetes Engine
+  requirements:
+  - Kubernetes Engine
+tls:
+  name: TLS
   requirements: []
-amazon ecr access viewer role:
-  name: Amazon ECR Access Viewer Role
-  requirements:
-  - The Amazon EKS worker node IAM role (NodeInstanceRole) must possess the following
-    IAM policy permissions for Amazon ECR.
-  - Only allow read-only access to Amazon ECR.
-amazon ecr image access viewer:
-  name: Amazon ECR Image Access Viewer
-  requirements: []
-kubernetes workload profile applicability:
-  name: Kubernetes Workload Profile Applicability
-  requirements:
-  - Allowlisting only approved Kubernetes workloads.
-netes service account:
-  name: netes service account
-  requirements:
-  - Scalability
-  - Reliability
-  - Credential isolation
-  - Least privilege
-aws credentials:
-  name: AWS credentials
-  requirements:
-  - Must be scoped
-  - Must be associated with a service account
-iam role for service accounts:
-  name: IAM Role for Service Accounts
-  requirements:
-  - Audit-ability - CloudTrail provides audit logging.
-  - Access to IAM roles for service accounts
-  - Container isolation - A container cannot access credentials that are intended
-    for another container.
-dedicated computing resources:
-  name: Dedicated Computing Resources
-  requirements:
-  - Segregated from the enterprise network
-  - No internet access
-  - Dedicated computing resources for administrative tasks
-ig 1, ig 2, ig 3:
-  name: IG 1, IG 2, IG 3
-  requirements:
-  - v7 4.3
-  - Ensure the Use of Dedicated Administrative Accounts
-  - Establish and Maintain Dedicated Computing Resources
-etcdctl:
-  name: etcdctl
-  requirements:
-  - etcdctl get
 kubernetes api server:
   name: Kubernetes API Server
   requirements:
-  - Private endpoint access is enabled.
-  - The API server is accessible from within your VPC.
-endpoint private access:
-  name: Endpoint Private Access
+  - <requirement>
+vpc:
+  name: VPC
   requirements:
-  - All desired networks are on the allowlist (whitelist).
-  - The API server is accessible from within your VPC.
-public endpoint access:
-  name: Public Endpoint Access
+  - <requirement>
+aws_region:
+  name: AWS_REGION
   requirements:
-  - Allowing public access requires a CIDR block.
-  - Public API server endpoint is accessible from the internet.
-private endpoint access:
-  name: Private Endpoint Access
+  - <requirement>
+kube_name:
+  name: KUBE_NAME
   requirements:
-  - All desired networks are
+  - <requirement>
+cluster_name:
+  name: CLUSTER_NAME
+  requirements:
+  - <requirement>
+privateendpointaccess:
+  name: PrivateEndpointAccess
+  requirements:
+  - <requirement>
+publicendpointaccess:
+  name: PublicEndpointAccess
+  requirements: []
+aws eks update-cluster-config:
+  name: aws eks update-cluster-config
+  requirements:
+  - --region $AWS_REGION --name $CLUSTER_NAME --resources-vpc-config endpointPrivateAccess=true,
+    endpointPrivateAccess=true, publicAccessCidrs="203.0.113.5/32"
 eks cluster endpoint:
   name: EKS Cluster Endpoint
   requirements:
-  - Private IP Addresses
-  - Disable public IP addresses
-  - IP Aliasing enabled
-  - Enable Firewall on Servers
-  - Virtual Firewall
-  - Public IP Addresses disabled
-  - Private Nodes are nodes with no public IP addresses
-  - Operating System Firewall
-  - Private Master IP Range
-  - Third-party Firewall Agent
-networkpolicy:
-  name: NetworkPolicy
-  requirements:
-  - Apply host-based firewalls or port filtering tools on end systems, with a default-deny
-    rule that drops all traffic except
-  - Increase memory footprint of kube-system process by approximately 128MB
-  - Require approximately 300 millicores of CPU
-  - Ensure only approved ports, protocols and services are running
-  - Ensure only network ports, protocols, and services listening on a system with
-    validated business needs are running
-  - Apply host-based firewalls or port filtering
-data encryption:
-  name: Data Encryption
-  requirements:
-  - Encrypt sensitive data in transit
-authentication and authorization:
-  name: Authentication and Authorization
-  requirements:
-  - Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes (Manual)
-references:
-  name: References
-  requirements:
-  - https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/data-protection.
+  - Private endpoint access to the Kubernetes API server
 fargate profile:
   name: Fargate Profile
   requirements:
-  - kubernetes_namespace
-kubernetes_namespace:
-  name: kubernetes_namespace
-  requirements: []
-eks-fargate-pods:
-  name: eks-fargate-pods
+  - '[''Enter the following information and choose Next.'']'
+  - '[''Choose a cluster to create a Fargate profile for.'']'
+name:
+  name: Name
   requirements:
-  - eks-fargate-pods.amazonaws.com
-execution role:
-  name: Execution Role
+  - '[''Choose the subnets to use for your pods.'']'
+  - '[''Enter the following information and choose Next.'']'
+  - '[''Choose the tags to optionally tag your Fargate profile.'']'
+  - '[''Choose the pod execution role to use with your Fargate profile.'']'
+  - '[''List text here.'']'
+  - '[{''Choose the following'': ''Namespace''}]'
+  - '[''Enter a unique name for your Fargate profile.'']'
+automated:
+  name: Automated
   requirements:
-  - Select subnets for pods.
-  - Deselect public subnets.
-  - Only private subnets are supported for pods running on Fargate.
-namespace:
-  name: Namespace
-  requirements:
-  - Use a namespace such as kube-system or default.
-  - Enter a namespace to match for pods.
-kubernetes labels:
-  name: Kubernetes Labels
-  requirements:
-  - Add Kubernetes labels to the selector.
-  - '{''For example, add the label infrastructure'': ''fargate to the selector.''}'
-fargate:
-  name: Fargate
-  requirements:
-  - AWS Fargate is not
-production systems:
-  name: Production Systems
-  requirements:
-  - Separate production and non-production systems
-  - Developers should not have unmonitored access to production environments.
-control plane components:
-  name: Control Plane Components
-  requirements:
-  - kubelet configuration file has permissions set to 644 or more restrictive (Manual)
-  - kubeconfig file permissions are set to 644 or more restrictive (Manual)
-  - Logging
-  - Anonymous Auth is
-  - kubelet configuration file ownership is set to root:root (Manual)
-  - kubelet kubeconfig file ownership is set to root:root (Manual)
-  - Audit Logs (Manual)
---hostname-override:
-  name: --hostname-override
-  requirements:
-  - Manual
---make-iptables-util-chains:
-  name: --make-iptables-util-chains
-  requirements:
-  - Automate
-apply security context to your pods and containers:
-  name: Apply Security Context to Your Pods and Containers
-  requirements:
-  - No empty requirements
-  - No explanations
-  - No markdown
-ensure image vulnerability scanning using amazon ecr image scanning or a third party provider:
-  name: Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third
-    party provider
-  requirements:
-  - No empty requirements
-  - No explanations
-  - No markdown
-minimize user access to amazon ecr:
-  name: Minimize user access to Amazon ECR
-  requirements:
-  - No empty requirements
-  - No explanations
-  - No markdown
-minimize cluster access to:
-  name: Minimize cluster access to
-  requirements: []
-iam authenticator for kubernetes (manual):
-  name: IAM Authenticator for Kubernetes (Manual)
-  requirements:
-  - No requirement
-trative boundaries between resources using namespaces o o 4.6.2:
-  name: trative boundaries between resources using namespaces o o 4.6.2
-  requirements:
-  - The default namespace should not be used
-  - Minimize cluster access to read-only for Amazon ECR
-  - Ensure kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure kubelet configuration file has permissions set to 644 or more restrictive
-  - Ensure
-  - Ensure Audit Logs
-  - Ensure kubelet kubeconfig file ownership is set to root:root
-  - Enable Network Policy is Enabled and set as appropriate
-  - Apply Security Context to Your Pods and Containers
-  - Minimize user access to Amazon ECR
-capabilities:
-  name: Capabilities
-  requirements:
-  - Page 160 Recommendation Set Correctly Yes No
-  - Ensure CNI plugin supports network policies.
-  - The default namespace should not be used.
-  - Create administrative boundaries between resources using namespaces.
-  - Prefer using secrets as files over secrets as environment variables.
-  - Ensure that all Namespaces have Network Policies defined.
-  - Apply Security Context to Your Pods and Containers.
+  - Minimize the admission of root containers
+  - Minimize the admission of containers with added capabilities
   - Minimize the admission of containers with capabilities assigned
-network policies:
-  name: Network Policies
+secrets management:
+  name: Secrets Management
   requirements:
-  - Prefer using secrets
-  - Prefer using secrets as files over secrets as environment variables
-  - Ensure all Namespaces have Network Policies defined.
-  - Ensures that all Namespaces have Network Policies defined
-  - Allows admission of containers with allowPrivilegeEscalation
-  - Support network policies
+  - Prefer
+--rotate-certificates:
+  name: --rotate-certificates
+  requirements:
+  - is not present or is set to true
+rotatekubeletservercertificate:
+  name: RotateKubeletServerCertificate
+  requirements:
+  - is set to true
+  - is not present or is set to true
+prefer using a container-optimized os when possible:
+  name: Prefer using a container-optimized OS when possible
+  requirements:
+  - is not present or is set to true
+minimize access to secrets:
+  name: Minimize access to secrets
+  requirements:
+  - is not present
+secrets:
+  name: Secrets
+  requirements:
+  - Secrets as environment variables
+  - Secrets as files
 kubeconfig:
   name: kubeconfig
   requirements:
-  - The kubelet kubeconfig file ownership is set to root:root o o 3.1.3
-  - The --authorization-mode argument is not set to AlwaysAllow o o
-  - The kubelet configuration file ownership is set to root:root o o 3.2.1
-  - Permissions must be set to 644 or more restrictive
-  - The kubelet configuration file has permissions set to 644 or more restrictive
-    o o 3.1.4
-  - The kubeconfig file permissions are set to 644 or more restrictive o o 3.1.2
-  - The Anonymous Auth is Not Enabled o o 3.2.2
-kubelet config:
-  name: kubelet config
-  requirements:
-  - Permissions must be set
-  - Permissions must be set to 644 or more restrictive
-kubelet auth:
-  name: kubelet auth
-  requirements:
-  - Permissions must be set to 644 or more restrictive
-kubeconfig file permissions:
-  name: kubeconfig file permissions
-  requirements: []
-iptables-util-chains:
-  name: iptables-util-chains
-  requirements:
-  - Ensure that the --hostname-override argument is not set o o 3.2.9
-  - Ensure that the RotateKubeletServerCertificate argument is set to true o o 3.2.11
-  - Ensure that the --rotate-certificates argument is not present or is set to true
-    o o 3.2.11
-  - Prefer using a container-optimized OS when possible o o 4.1.1
-  - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures
-    appropriate event capture o o 3.2.10
-ecr image scanning:
-  name: ECR Image Scanning
-  requirements:
-  - Supports Amazon ECR image scanning
-  - Minimize user access to Amazon ECR
-  - Ensures that all images are scanned
+  - 644 or more restrictive
