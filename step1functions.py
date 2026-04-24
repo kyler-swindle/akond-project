@@ -65,9 +65,74 @@ TEXT:
 {chunk}
 """
 
+# =========================
+# ONE-SHOT PROMPT
+# =========================
+def one_shot_prompt(chunk: str) -> str:
+    return f"""
+Extract Key Data Elements (KDEs) and their requirements.
+
+Example:
+user_authentication:
+  name: User Authentication
+  requirements:
+    - Must use multi-factor authentication
+    - Passwords must be at least 12 characters
+
+Now extract from the following text:
+
+Return ONLY valid YAML.
+
+Format:
+element1:
+  name: <KDE name>
+  requirements:
+    - <requirement>
+
+Rules:
+- No markdown
+- Do NOT use ```yaml
+- No empty requirements
+- No explanations
+
+TEXT:
+{chunk}
+"""
 
 # =========================
-# RUN LLM
+# CHAIN OF THOUGHT PROMPT
+# =========================
+def cot_prompt(chunk: str) -> str:
+    return f"""
+Extract Key Data Elements (KDEs) and their requirements.
+
+Think step-by-step:
+1. Identify potential KDEs mentioned in the text.
+2. For each KDE, determine what requirements are specified.
+3. Ensure requirements are clear and non-empty.
+
+Return ONLY valid YAML.
+
+Format:
+element1:
+  name: <KDE name>
+  requirements:
+    - <requirement>
+
+Rules:
+- No markdown
+- Do NOT use ```yaml
+- No empty requirements
+- No explanations
+
+TEXT:
+{chunk}
+"""
+
+
+
+# =========================
+# Run LLM
 # =========================
 def run_llm(prompt, tokenizer, model):
     inputs = tokenizer(prompt, return_tensors="pt")
