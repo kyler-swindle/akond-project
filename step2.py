@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 from typing import Any
 import yaml
 
@@ -184,32 +185,60 @@ def compare_element_names_and_requirements(
     output_path.write_text(content, encoding="utf-8")
     return content
 
+# new run to work with bash file
 if __name__ == "__main__":
-    """
-    run cell
-    """
+    print(sys.argv)
 
-    for i in range(1, 4):
-        for j in range(i, 5):
-            print(f"{i} {j} ======================================")
-            # step 2 running
+    (i, j) = (sys.argv[1][10], sys.argv[2][10])
+    print(f"{i} {j} ======================================")
 
-            Path("outputs").mkdir(exist_ok=True)
+    # step 2 running
+    Path("outputs").mkdir(exist_ok=True)
 
-            name_output = compare_element_names(
-                f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
-                f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
-                f"outputs/name_differences{i}{j}.txt"
-            )
+    name_output = compare_element_names(
+        f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+        f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+        f"outputs/name_differences{i}{j}.txt"
+    )
 
-            req_output = compare_element_names_and_requirements(
-                f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
-                f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
-                f"outputs/requirement_differences{i}{j}.txt"
-            )
+    req_output = compare_element_names_and_requirements(
+        f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+        f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+        f"outputs/requirement_differences{i}{j}.txt"
+    )
 
-            print("Names output:")
-            print(name_output)
-            print()
-            print("Requirements output:")
-            print(req_output)
+    print("Names output:")
+    print(name_output)
+    print()
+    print("Requirements output:")
+    print(req_output)
+
+# if __name__ == "__main__":
+#     """
+#     run cell
+#     """
+
+#     for i in range(1, 4):
+#         for j in range(i, 5):
+#             print(f"{i} {j} ======================================")
+#             # step 2 running
+
+#             Path("outputs").mkdir(exist_ok=True)
+
+#             name_output = compare_element_names(
+#                 f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+#                 f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+#                 f"outputs/name_differences{i}{j}.txt"
+#             )
+
+#             req_output = compare_element_names_and_requirements(
+#                 f"data/IndividualCleanedAgain/cis-r{i}-kdes.yaml",
+#                 f"data/IndividualCleanedAgain/cis-r{j}-kdes.yaml",
+#                 f"outputs/requirement_differences{i}{j}.txt"
+#             )
+
+#             print("Names output:")
+#             print(name_output)
+#             print()
+#             print("Requirements output:")
+#             print(req_output)
