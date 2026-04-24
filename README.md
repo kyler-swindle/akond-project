@@ -34,8 +34,10 @@ chmod +x step2run.bash
 This script expects two filenames and runs:
 
 ```bash
-venv/bin/python3 step2.py "data/<input_pdf_1>" "data/<input_pdf_2>"
+./step2run.bash "<input_pdf_1>" "<input_pdf_2>"
 ```
+note: the /data/ folder will be appended automatically
+note: run using wsl
 
 ## Use demo.py
 from instructions
