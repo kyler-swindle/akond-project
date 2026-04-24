@@ -1,18 +1,57 @@
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from dotenv import load_dotenv
+
 import sys
+import re
+import os
 
 import yaml
-import re
-from transformers import AutoTokenizer, AutoModelForCausalLM
-import os
-from dotenv import load_dotenv
 import fitz
+
+model_name = "google/gemma-3-1b-it"
+currentFile = 0  # Global variable to track current file for logging
+
+def LoadPDF(file_path: str) -> str:
+    # Construct the full path using the global folder_path
+    full_path_in_drive = os.path.join("data", file_path)
+    if not os.path.exists(full_path_in_drive):
+        raise FileNotFoundError(f"{full_path_in_drive} not found")
+
+    reader = fitz.open(full_path_in_drive)
+    text = ""
+
+    for page in reader:
+        text += page.get_text() or ""
+
+    if not text.strip():
+        raise ValueError("Empty PDF content")
+
+    return text
+
+def SaveToTextFile(text: str, output_file: str) -> None:
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(text)
+
+# =========================
+# Convert ALL PDF to TXT
+# =========================
+def TurnAllPDFIntoText():
+    print(os.listdir("data"))
+
+    for i in range(1, 5):
+        print(f"Processing cis-r{i}.pdf...")
+        
+        if (f"cis-r{i}.txt") in os.listdir("data"):
+            print(f"data/cis-r{i}.txt exists, skipping...")
+            continue
+
+        r1Out = LoadPDF(f"cis-r{i}.pdf")
+        SaveToTextFile(r1Out, f"data/cis-r{i}.txt")
 
 # =========================
 # LOAD MODEL
 # =========================
 def load_model():
-    model_name = "google/gemma-3-1b-it"
-
     load_dotenv()
     HF_TOKEN = os.getenv("HF_TOKEN")
 
@@ -238,11 +277,21 @@ def process_file(file_path, tokenizer, model):
     for i, chunk in enumerate(chunks):
         print(f"Chunk {i+1}/{len(chunks)}")
 
-        prompt = zero_shot_prompt(chunk)
-        output = run_llm(prompt, tokenizer, model)
+        prompt = build_zero_shot_prompt(chunk)
 
-        # SAFE PRINT (no crash)
-        print("Output preview:", output[:200].encode("utf-8", errors="ignore").decode())
+        # log prompt
+        AppendToFile(f"{prompt.strip()}\n", f"cis-r{currentFile}.log")
+        AppendToFile(f"...\n", f"cis-r{currentFile}.log")
+
+        # log prompt type
+        AppendToFile(f"zero_shot_prompt\n", f"cis-r{currentFile}.log")
+        AppendToFile(f"...\n", f"cis-r{currentFile}.log")
+
+        output = run_llm(prompt, tokenizer, model)
+        
+        # log raw llm output
+        AppendToFile(f"{output.strip()}\n", f"cis-r{currentFile}.log")
+        AppendToFile(f"...\n", f"cis-r{currentFile}.log")
 
         output = extract_yaml(output)
 
@@ -250,7 +299,7 @@ def process_file(file_path, tokenizer, model):
         if data:
             parsed_outputs.append(data)
         else:
-            print("⚠️ Skipped invalid YAML chunk")
+            print("Skipped invalid YAML chunk")
 
     merged = merge_kdes(parsed_outputs)
     return merged
@@ -300,6 +349,21 @@ def pdf_to_txt(pdf_path: str) -> str:
 
     return text
 
+def AppendToFile(content, filePath):
+    # print(filePath)
+    filePath = os.path.join("logs", filePath)
+    # print(filePath)
+
+    if not os.path.exists("logs"):
+        os.makedirs("logs")
+    
+    if not os.path.exists(filePath):
+        # Create the file if it doesn't exist
+        with open(filePath, "w", encoding="utf-8") as f:
+            f.write("") # Write an empty string to create the file
+
+    with open(filePath, "a", encoding="utf-8") as f:
+        f.write(content)
 
 # =========================
 # MAIN
@@ -314,6 +378,16 @@ if __name__ == "__main__":
         "data/cis-r4.txt"
     ]
 
-    for file in files:
+    for i, file in enumerate(files):
+        currentFile = i+1  # Set global variable for logging
+
+        # delete log file if it exists
+        if os.path.exists(f"logs/cis-r{currentFile}.log"):
+            os.remove(f"logs/cis-r{currentFile}.log")
+
+        # log model name
+        AppendToFile(model_name + "\n", f"cis-r{currentFile}.log")
+        AppendToFile(f"...\n", f"cis-r{currentFile}.log")
+
         result = process_file(file, tokenizer, model)
         save_yaml(result, file)
