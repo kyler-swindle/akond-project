@@ -1,10 +1,10 @@
-import step1functions
+import step1
 
 # ====================
 # input and vlaidation
 # ====================
 def test_pdf_to_txt():
-    text = step1functions.pdf_to_txt("cis-r1.pdf")
+    text = step1.pdf_to_txt("cis-r1.pdf")
 
     assert text.strip() != ""
     
@@ -20,7 +20,7 @@ def test_pdf_to_txt():
 # ====================
 def test_construct_zero_shot_prompt():
     text = "This is a sample text to test the construction of a zero-shot prompt."
-    prompt = step1functions.build_zero_shot_prompt(text)
+    prompt = step1.build_zero_shot_prompt(text)
     assert "Extract Key Data Elements (KDEs) and their requirements" in prompt
     assert text in prompt
 
@@ -29,7 +29,7 @@ def test_construct_zero_shot_prompt():
 # ====================
 def test_construct_one_shot_prompt():
     text = "This is a sample text to test the construction of a one-shot prompt."
-    prompt = step1functions.build_one_shot_prompt(text)
+    prompt = step1.build_one_shot_prompt(text)
     assert "Extract Key Data Elements (KDEs) and their requirements" in prompt
     assert text in prompt
 
@@ -38,7 +38,7 @@ def test_construct_one_shot_prompt():
 # ====================
 def test_construct_cot_prompt():
     text = "This is a sample text to test the construction of a chain of thought prompt."
-    prompt = step1functions.build_chain_of_thought_prompt(text)
+    prompt = step1.build_chain_of_thought_prompt(text)
     assert "Extract Key Data Elements (KDEs) and their requirements" in prompt
     assert text in prompt
 
@@ -47,7 +47,7 @@ def test_construct_cot_prompt():
 # Test identification of KDE
 # ====================
 def test_identify_kde():
-    tokenizer, model = step1functions.load_model()
+    tokenizer, model = step1.load_model()
 
     text = ""
 
@@ -55,8 +55,8 @@ def test_identify_kde():
     with open("data/cis-r1.txt", "r", encoding="utf-8") as f:
         text = f.read(5000)
 
-    prompt = step1functions.build_zero_shot_prompt(text)
-    output = step1functions.run_llm(prompt=prompt, tokenizer=tokenizer, model=model)
+    prompt = step1.build_zero_shot_prompt(text)
+    output = step1.run_llm(prompt=prompt, tokenizer=tokenizer, model=model)
 
     assert output.strip() is not None
 
